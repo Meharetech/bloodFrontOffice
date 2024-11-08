@@ -167,7 +167,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
       console.log(error);
       // toast.error(error.response.data.error);
     } finally {
-      // setsignupbutton(true);
+      setsignupbutton(true);
     }
   };
 
