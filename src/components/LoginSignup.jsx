@@ -16,6 +16,7 @@ import logo from './images/iinsaf.png';
 
 import loginleftImage from './images/loginleftImage.png'
 import loginrightImage from './images/loginrightImage.png'
+import bloodRegister from './images/bloodregister.png'
 import { BaseUrl } from './Util/util';
 
 // const images = [left, login1, login2, login3, login4, login5];
@@ -120,11 +121,14 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
   const handleSignup = async () => {
     // Phone number validation: Check if it's exactly 10 digits
     if (!phoneNumber || phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+      window.scrollTo(0, 0)
+      // window.alert('Invalid phone number. It must be exactly 10 digits --.')
       toast.error('Invalid phone number. It must be exactly 10 digits.');
       return;
     }
     // Name validation: Ensure the name is not empty
     if (!name || name.trim() === "") {
+      window.scrollTo(0, 0)
       toast.error('Name is required.');
       return;
     }
@@ -166,7 +170,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
     } catch (error) {
       console.log(error);
       // toast.error(error.response.data.error);
-    } 
+    }
     // finally {
     //   setsignupbutton(true);
     // }
@@ -191,34 +195,37 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
     }
   }
 
-
-
-
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-gray-100"
+      className={`min-h-screen flex items-center ${signup ? 'justify-start' : "justify-center"}  bg-gray-100`}
       style={{
-        backgroundImage: `url(${loginleftImage}), url(${loginrightImage})`, // Add both images
-        backgroundSize: '50%, 50%', // Make each image cover the div
-        backgroundPosition: 'left, right', // Center each image
+        backgroundImage: signup
+          ? `url(${bloodRegister})`
+          : `url(${loginleftImage}), url(${loginrightImage})`,
+        backgroundSize: signup ? '56%' : '50%, 50%',
+        backgroundPosition: signup ? 'right' : 'left, right',
         backgroundRepeat: 'no-repeat, no-repeat' // Prevent images from repeating
       }}
     >
 
       <h1>{signupbuttonclick}</h1>
-      {/* Outer border container */}
-      <div className=" w-5/6 md:w-full max-w-md bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6" data-aosx="fade-left">
+      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"}  bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? "md:ml-32 ml-12" : ""}`} data-aosx="fade-left">
         {/* Logo and Title */}
         <div className="sm:mx-auto sm:w-full sm:max-w-sm" data-aosx="zoom-in">
           <img alt="Your Company" src={logo} className="mx-auto h-10 w-auto" />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            {signup ? 'Sign Up to Your Account' : 'Login to Your Account'}
+            {signup ? 'Sign Up to Your Account' : 'Log in to Your Account'}
           </h2>
         </div>
 
         {/* Form Inputs */}
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <div className="space-y-6">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-xl ml-7">
+          <div
+            className={`grid gap-6 space-y-0`} // Add spacing between fields
+            style={{
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' // Use minmax to define responsive columns
+            }}
+          >
 
 
 
@@ -389,7 +396,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                   onClick={handleSignup}
                   className="w-full flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Signup
+                  Sign up
                 </button>
               </div>
             ) : (
