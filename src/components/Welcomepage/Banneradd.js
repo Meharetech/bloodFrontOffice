@@ -24,17 +24,24 @@ const Banneradd = () => {
 
         <>
 
-            {data && <div className=' mb-2 mt-2 z-20 w-full'>
-                <marquee>
-              {data.map((bannerItem) => (
-                    <div key={bannerItem._id} className=" mb-2 bg-white p-4 rounded-lg shadow">
-                        <h1 className="text-3xl font-bold mb-2">{bannerItem.title}</h1>
-                        <img src={bannerItem.image} alt={bannerItem.description} className="mb-2" />
-                        <h2 className='text-2xl'>{bannerItem.description}</h2>
+            {
+                data && (
+                    <div className="mb-2 mt-2 z-20 w-full">
+                        <marquee>
+                            <div className="flex gap-4">
+                                {data.map((bannerItem) => (
+                                    <div key={bannerItem._id} className="bg-white p-4 rounded-lg shadow flex-shrink-0">
+                                        <h1 className="text-3xl font-bold mb-2">{bannerItem.title}</h1>
+                                        <img src={bannerItem.image} alt={bannerItem.description} className="mb-2" />
+                                        <h2 className="text-2xl">{bannerItem.description}</h2>
+                                    </div>
+                                ))}
+                            </div>
+                        </marquee>
                     </div>
-                    ))}
-                </marquee>
-            </div>}
+                )
+            }
+
         </>
     )
 }

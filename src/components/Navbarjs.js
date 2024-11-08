@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import logo from './images/iinsaf.png';
+import logo from './images/bloodlogo.png';
 import logo2 from '../images/favicon.png';
 
 const Navbarjs = ({ setToken, setsignup }) => {
@@ -64,8 +64,8 @@ const Navbarjs = ({ setToken, setsignup }) => {
     >
       <Container fluid style={{ paddingLeft: '0px', paddingRight: '0px' }}>
         <Navbar.Brand as={Link} to="/" className="flex-grow-1 flex ml-4">
-          <img style={{ height: '40px' }} src={logo} alt="logo" />
-          <img style={{ height: '40px' }} src={logo2} alt="logo" />
+          {/* <img style={{ height: '40px', opacity: '0' }} src={logo2} alt="logo" /> */}
+          <img style={{ height: '50px'}} src={logo} alt="logo" />
         </Navbar.Brand>
 
         <Navbar.Toggle
@@ -111,7 +111,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                 <Nav.Link as={Link} to="/adminimageupload" className={navbarExpanded ? 'mt-3' : ''} onClick={() => setNavbarExpanded(false)}>
                   Images
                 </Nav.Link>
-                                <button
+                <button
                   className={`bg-indigo-500 px-5 text-white rounded-3xl transition duration-300 hover:bg-indigo-600 ${navbarExpanded ? 'mt-3 h-10' : ''}`}
                   onClick={() => {
                     handleLogout();

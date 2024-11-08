@@ -77,10 +77,14 @@ const Hero = ({ setToken }) => {
   return (
     <div className="hero-container " data-aos='fade-left'>
 
-      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 items-center justify-between">
+      <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 items-center justify-between 
+      p-10 
+      sm:p-24
+">
+
 
         {/* Accordion for Info Sections */}
-        <div className=' ml-10 mr-2 mt-2'>
+        <div className=' ml-2 mr-2 mt-2'>
           <Accordion defaultActiveKey="0">
             {/* Section 1: Eligibility */}
             <Accordion.Item eventKey="0">
@@ -180,8 +184,8 @@ const Hero = ({ setToken }) => {
         </div>
 
         {/* PostBloodRequest component */}
-        <div className='w-full'>
-          <PostBloodRequest sendLocation={sendLocation}  />
+        <div className='w-full mt-10'>
+          <PostBloodRequest sendLocation={sendLocation} />
         </div>
 
       </div>
@@ -243,7 +247,7 @@ const Hero = ({ setToken }) => {
 
       <div data-aos='fade-zoom'>
         <div className='flex items-center justify-center'>
-        <h2 className='text-2xl w-96 text-white rounded-full font-bold bg-red-600'>Blood Request Near You</h2>
+          <h2 className='text-2xl w-96 text-white rounded-full font-bold bg-red-600'>Blood Request Near You</h2>
         </div>
         <ul className="donater-grid ml-2 mr-2 mt-2 flex items-center lg:text-2xl justify-evenly">
           {donaters.map((donater, index) => (
