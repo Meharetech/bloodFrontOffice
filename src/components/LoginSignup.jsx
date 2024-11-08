@@ -6,15 +6,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from './images/iinsaf.png';
-import left from './images/bloodDonationLogin3.jpg';
-import login1 from './images/bloodDonationLogin1.jpg';
-import login2 from './images/bloodDonationLogin2.jpg';
-import login3 from './images/bloodDonationLogin3.jpg';
-import login4 from './images/bloodDonationLogin4.jpg';
-import login5 from './images/bloodDonationLogin5.jpg';
+
+// import left from './images/bloodDonationLogin3.jpg';
+// import login1 from './images/bloodDonationLogin1.jpg';
+// import login2 from './images/bloodDonationLogin2.jpg';
+// import login3 from './images/bloodDonationLogin3.jpg';
+// import login4 from './images/bloodDonationLogin4.jpg';
+// import login5 from './images/bloodDonationLogin5.jpg';
+
+import loginleftImage from './images/loginleftImage.png'
+import loginrightImage from './images/loginrightImage.png'
 import { BaseUrl } from './Util/util';
 
-const images = [left, login1, login2, login3, login4, login5];
+// const images = [left, login1, login2, login3, login4, login5];
 
 const LoginSignup = ({ setToken, signup, setsignup }) => {
   const [name, setname] = useState('');
@@ -22,7 +26,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
   const [password, setPassword] = useState('');
   const [bloodGroup, setBloodGroup] = useState('');
   const [email, setEmail] = useState('');
-  const [ngoName,setngoName] = useState('');
+  const [ngoName, setngoName] = useState('');
   const [location, setLocation] = useState({ longitude: null, latitude: null });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [signupbuttonclick, setsignupbutton] = useState(false);
@@ -71,13 +75,13 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
   }, [])
 
   // Slide effect for images
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change slide every 3 seconds
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  //   }, 3000); // Change slide every 3 seconds
 
-    return () => clearInterval(intervalId); // Cleanup on unmount
-  }, []);
+  //   return () => clearInterval(intervalId); // Cleanup on unmount
+  // }, []);
 
   const handleLogin = async () => {
     if (location.longitude === null || location.latitude === null) {
@@ -90,8 +94,8 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
       return;
     }
 
-     // Password validation: Ensure the password is at least 6 characters long (you can add more rules like including numbers or special characters)
-     if (!password || password.length < 6) {
+    // Password validation: Ensure the password is at least 6 characters long (you can add more rules like including numbers or special characters)
+    if (!password || password.length < 6) {
       window.scroll(0, 0);
       toast.error('Invalid password. It must be at least 6 characters long.');
       return;
@@ -155,7 +159,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
 
     // Proceed with signup if all validations pass
     try {
-      const response = await axios.post(`${BaseUrl}/addUser`, { phoneNumber, password, bloodGroup, email, name,ngoName });
+      const response = await axios.post(`${BaseUrl}/addUser`, { phoneNumber, password, bloodGroup, email, name, ngoName });
       console.log(response.data);
       toast.success(` ${response.data.message}`);
       setsignupbutton(true);
@@ -193,14 +197,16 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
     <div
       className="min-h-screen flex items-center justify-center bg-gray-100"
       style={{
-        backgroundImage: `url(${images[currentIndex]})`, // Set the current image as the background
-        backgroundSize: 'cover', // Cover the entire background
-        backgroundPosition: 'center', // Center the background image
+        backgroundImage: `url(${loginleftImage}), url(${loginrightImage})`, // Add both images
+        backgroundSize: '50%, 50%', // Make each image cover the div
+        backgroundPosition: 'left, right', // Center each image
+        backgroundRepeat: 'no-repeat, no-repeat' // Prevent images from repeating
       }}
     >
+
       <h1>{signupbuttonclick}</h1>
       {/* Outer border container */}
-      <div className="w-full max-w-md bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6" data-aosx="fade-left">
+      <div className=" w-5/6 md:w-full max-w-md bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6" data-aosx="fade-left">
         {/* Logo and Title */}
         <div className="sm:mx-auto sm:w-full sm:max-w-sm" data-aosx="zoom-in">
           <img alt="Your Company" src={logo} className="mx-auto h-10 w-auto" />
@@ -291,7 +297,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                       disabled={signupbuttonclick}
                     />
                   </div>
-                </div>  
+                </div>
               </>
             )}
 
