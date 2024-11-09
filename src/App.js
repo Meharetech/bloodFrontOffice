@@ -1,6 +1,6 @@
 // app.js
 
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -40,6 +40,8 @@ function App() {
 
   const [token, setToken] = useState('');
   const [adminToken, setAdminToken] = useState('');
+  const location = useLocation(); // Get current location
+  const isLoginPage = location.pathname === "/loginsignup";
 
   const checkAuth = () => {
     const storedToken = localStorage.getItem('token');
@@ -61,7 +63,7 @@ function App() {
       <Navbarjs setsignup={setsignup} setToken={setToken} />
       <div>
         {/* <ButtonComponent/> */}
-        <ScrolltoTop/>
+        <ScrolltoTop />
         <ToastContainer className='mt-10 ml-1 mr-1' />
         <Routes>
           <Route path="/loginsignup" element={token ? <Navigate to="/home" /> : <LoginSignup setsignup={setsignup} signup={signup} setToken={setToken} />} />
@@ -87,11 +89,11 @@ function App() {
           <Route path='/forgetPassword' element={<ForgetPassword />} />
           <Route path='/adminimageupload' element={<UpdateImageComponent />} />
           {/* <Route path='/volunteervechile' element={<VolunteerVechile />} /> */}
-          <Route path='/adminvechile' element={<AdminVechile/>} />
-          <Route path='/hospitalbloodinfo' element={<HospitalBloodInfo/>} />
+          <Route path='/adminvechile' element={<AdminVechile />} />
+          <Route path='/hospitalbloodinfo' element={<HospitalBloodInfo />} />
         </Routes>
       </div>
-      <Footer />
+      {!isLoginPage && <Footer />}
     </div>
   );
 }
