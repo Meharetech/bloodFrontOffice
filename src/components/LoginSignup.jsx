@@ -202,7 +202,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
         backgroundImage: signup
           ? `url(${bloodRegister})`
           : `url(${loginleftImage}), url(${loginrightImage})`,
-        backgroundSize: signup ? '56%' : '50%, 50%',
+        backgroundSize: signup ? '56%' : '40%, 40%',
         backgroundPosition: signup ? 'right' : 'left, right',
         backgroundRepeat: 'no-repeat, no-repeat' // Prevent images from repeating
       }}
@@ -226,8 +226,6 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
               gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' // Use minmax to define responsive columns
             }}
           >
-
-
 
             {/* Phone Number Input */}
             <div data-aosx="fade-up" className={signupbuttonclick ? "hidden" : "block"} >
@@ -406,12 +404,11 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                     onClick={handleLogin}
                     className="w-full flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Login
+                    Log in
                   </button>
                 </div>
 
-                {/* Create Account Button */}
-                <div className="mt-4" data-aosx="fade-left">
+                <div className="" data-aosx="fade-left">
                   <button
                     onClick={() => setsignup(true)}
                     className="w-full flex justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
@@ -424,7 +421,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
 
             {/* Toggle between Login and Signup */}
             {signup && (
-              <div className="mt-4" data-aosx="fade-left" >
+              <div className="" data-aosx="fade-left" >
                 <button
                   onClick={() => { setsignup(false); setsignupbutton(false) }}
                   className="w-full flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
