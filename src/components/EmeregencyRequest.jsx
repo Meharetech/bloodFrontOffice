@@ -70,6 +70,7 @@ const EmergencyRequest = () => {
         try {
             const response = await axios.post(`${BaseUrl}/sendEmergencyBloodRequest`, userData);
             toast.success("Blood request submitted successfully! Please check your phone for the OTP.");
+            window.alert("Blood request submitted successfully! Please check your phone for the OTP.")
             setIsOtpSent(true); // Enable OTP input section
             console.log("Blood request response:", response.data);
         } catch (error) {
@@ -87,7 +88,9 @@ const EmergencyRequest = () => {
 
         try {
             const response = await axios.post(`${BaseUrl}/verifyEmergencyOtp`, { otp, phoneNumber });
+            window.alert("OTP verified successfully! Your request has been approved.")
             toast.success("OTP verified successfully! Your request has been approved.");
+
             console.log("OTP verification response:", response.data);
         } catch (error) {
             console.error('OTP verification failed:', error);
