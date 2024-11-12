@@ -57,7 +57,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
     localStorage.removeItem('htoken');
     localStorage.removeItem('adminToken');
     setToken('');
-    navigate('/loginsignup');
+    navigate('/');
     setSidebarOpen(false);
   };
 
@@ -83,7 +83,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
           <Navbar.Brand as={Link} to="/" className="flex-grow-1 flex ml-4">
             <img style={{ height: '50px' }} src={logo} alt="logo" />
           </Navbar.Brand>
-          {isDashboard ? (
+          {token ? (isDashboard ? (
             <>
               <div className={`flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex`}>
                 <Link to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
@@ -121,6 +121,28 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
               <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
             </div>
+          )
+          ) : (
+            <>
+              <Link to="/" onClick={() => setSidebarOpen(false)}  className="text-gray-800 hover:text-red-600 md:px-2">
+                Home
+              </Link>
+              <Link to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                Emergency Blood Request
+              </Link>
+              <Link to="/volunteervehicle" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                Volunteer Vehicle
+              </Link>
+              <Link to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                Hospital / Organization
+              </Link>
+              <Link to="/loginsignup" onClick={handleLogin} className="text-gray-800 hover:text-red-600 md:px-2">
+                Login
+              </Link>
+              <Link to="/loginsignup" onClick={handleSignup} className="text-gray-800 hover:text-red-600 md:px-2">
+                Register As a Donor
+              </Link>
+            </>
           )}
 
 
@@ -132,7 +154,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[173px] sm:mt-[118px]'} ${isDashboard ?' mt-[203px]':'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
+        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[173px] sm:mt-[118px]'} ${isDashboard ? ' mt-[203px]' : 'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
       // style={{ maxHeight: 'md:calc(100vh - 118px) calc(100vh-148px)' }}
       >
         <Nav className="sidebar-nav">
@@ -183,7 +205,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)}>
                 Your Camp Requests
               </Nav.Link>
-              <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)}>
+              <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
                 Home
               </Nav.Link>
               <Nav.Link as={Link} to="/about" onClick={() => setSidebarOpen(false)}>
