@@ -4,7 +4,7 @@
 body{
   background-image: url(./components/images/newbgimmage.jpg);
   background-size: cover;
-  backdrop-filter: blur(7px);
+  /* backdrop-filter: blur(7px); */
   -webkit-backdrop-filter: blur(10px);
   background-attachment: fixed;
   
@@ -46,7 +46,7 @@ body{
 }
 
 
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)

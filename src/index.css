@@ -7,41 +7,45 @@
 
 
 @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  .animate-scroll {
-    display: flex;
-    width: 200%; /* This should be 100% more than the total width of your content */
-    animation: scroll 20s linear infinite;
-  }
-  
-
-  /* App.css */
-  @keyframes marquee {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0);
   }
 
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: 200%;
+  /* This should be 100% more than the total width of your content */
+  animation: scroll 20s linear infinite;
+}
 
 
-  
+/* App.css */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+
 /* Scrollbar for WebKit browsers */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* Hide the track */
+  background: transparent;
+  /* Hide the track */
 }
 
 ::-webkit-scrollbar-thumb {
@@ -64,40 +68,69 @@ html {
 
 
 .marquee-container {
-  width: 100%;        /* Full width of the container */
-  overflow: hidden;   /* Hide the overflow so the components appear to scroll */
+  width: 100%;
+  /* Full width of the container */
+  overflow: hidden;
+  /* Hide the overflow so the components appear to scroll */
 }
 
 .marquee-content {
-  display: flex;                      /* Flexbox for horizontal alignment */
-  animation: marquee 38s linear infinite; /* Animation for the scrolling effect */
+  display: flex;
+  /* Flexbox for horizontal alignment */
+  animation: marquee 38s linear infinite;
+  /* Animation for the scrolling effect */
 }
 
 @keyframes marquee {
   from {
-    transform: translateX(100%); /* Start from the right */
+    transform: translateX(100%);
+    /* Start from the right */
   }
+
   to {
-    transform: translateX(-100%); /* Move to the left */
+    transform: translateX(-100%);
+    /* Move to the left */
   }
-  
+
 }
 
 .scroll-container {
-  width: 100%;        /* Full width of the container */
-  overflow: hidden;   /* Hide the overflow to create the scrolling effect */
+  width: 100%;
+  /* Full width of the container */
+  overflow: hidden;
+  /* Hide the overflow to create the scrolling effect */
 }
 
 .scroll-content {
-  display: flex;                      
-  animation: scroll-left-right 30s linear infinite; /* Adjust the speed as needed */
+  display: flex;
+  animation: scroll-left-right 30s linear infinite;
+  /* Adjust the speed as needed */
 }
 
 @keyframes scroll-left-right {
   from {
-    transform: translateX(0%); /* Start off-screen to the left */
+    transform: translateX(0%);
+    /* Start off-screen to the left */
   }
+
   to {
-    transform: translateX(100%);  /* Move off-screen to the right */
+    transform: translateX(100%);
+    /* Move off-screen to the right */
   }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }

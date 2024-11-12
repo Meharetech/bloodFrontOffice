@@ -32,6 +32,8 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [signupbuttonclick, setsignupbutton] = useState(false);
   const [otp, setotp] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -102,7 +104,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
       return;
     }
 
-
+    setLoading(true);
     try {
       const response = await axios.post(`${BaseUrl}/loginUser`, { phoneNumber, password, location });
       localStorage.setItem('token', response.data.token);
@@ -116,6 +118,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
       }
 
     }
+    setLoading(false);
   };
 
   const handleSignup = async () => {
@@ -400,12 +403,14 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
             </div>
           ) : (
             <div>
-              <div data-aosx="fade-left" className='mt-6 flex justify-center'>
+              <div data-aosx="fade-left" className="mt-6 flex justify-center">
                 <button
                   onClick={handleLogin}
-                  className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  disabled={loading}
+                  className={`flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm ${loading ? 'bg-indigo-400' : 'hover:bg-indigo-500'
+                    } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
                 >
-                  Log in
+                  {loading ? 'Logging in...' : 'Log in'}
                 </button>
               </div>
 
