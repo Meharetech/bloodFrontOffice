@@ -8,6 +8,7 @@ import UploadeDonationphoto from './UploadeDonationphoto';
 const UserProfile = () => {
   const [user, setUser] = useState({});
   const [previousRequest, setPreviousRequest] = useState(null)
+  const [previousEmergncyRequest, setPreviousEmergncyRequest] = useState(null)
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const UserProfile = () => {
         });
         setUser(response.data.user);
         setPreviousRequest(response.data.previousRequests);
+        setPreviousEmergncyRequest(response.data.previousEmergncyRequest)
         console.log('This is the response from the server for fetchData =>', response.data);
       } catch (error) {
         console.log('Error fetching data:', error);
@@ -111,11 +113,53 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-        
-            {/* User donation photo upload section  */}
-            <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6 mt-6">
-              <UploadeDonationphoto/>
+
+      {/* User donation photo upload section  */}
+      <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6 mt-6">
+        <UploadeDonationphoto />
+      </div>
+
+      {/* Display existing requests */}
+      <div className="existing-requests">
+        <h2 className="text-2xl font-bold text-center text-red-600 mb-4 mt-14">Emergency Requests</h2>
+        <ul className="space-y-4">
+          {previousEmergncyRequest?.map((request, index) => (
+            <li key={index} className="bg-red-50 border border-red-200 p-4 rounded mb-4 shadow-sm">
+              <div className="flex items-center space-x-4">
+                <div className="flex flex-col">
+                  <p className="font-semibold">Request ID: {request._id || 'No details available'}</p>
+                  <p className="font-semibold">Blood Group: {request.bloodGroup || 'No details available'} <FaTint className="text-red-600 mr-2" /></p>
+                  <p className="text-gray-700">{request.name || 'No details available'}</p>
+                  <p className="text-sm text-gray-500">{request.phoneNumber || 'No details available'}</p>
+                </div>
+                <div className="ml-auto text-right">
+                  <span className="text-xs text-gray-500">Status:</span>
+                  <span className={`font-semibold ${request.status === 'approved' ? 'text-green-500' : 'text-red-500'}`}>
+                    {request.status}
+                  </span>
+                </div>
               </div>
+              <div className="mt-2">
+                {/* Google Maps Link with Latitude and Longitude */}
+                <p className="text-sm text-gray-600">
+                  <strong>Location:</strong>{' '}
+                  <a
+                    href={`https://www.google.com/maps?q=${request.location.latitude},${request.location.longitude}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    Latitude: {request.location.latitude}, Longitude: {request.location.longitude}
+                  </a>
+                </p>
+                <p className="text-sm text-gray-600"><strong>Request Time:</strong> {new Date(request.dateOfQuery).toLocaleString()}</p>
+                <p className="text-sm text-gray-600"><strong>Expiry:</strong> {new Date(request.expireAt).toLocaleString()}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+      </div>
 
       {/* Display Previous Requests */}
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg p-6 mt-6">

@@ -1,14 +1,22 @@
 .App {
   text-align: center;
 }
-body{
+
+body {
   background-image: url(./components/images/newbgimmage.jpg);
   background-size: cover;
   /* backdrop-filter: blur(7px); */
   -webkit-backdrop-filter: blur(10px);
   background-attachment: fixed;
-  
+
 }
+
+
+body::-webkit-scrollbar {
+  display: none;
+  /* For Chrome, Safari, and Opera */
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

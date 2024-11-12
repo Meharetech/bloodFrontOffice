@@ -37,6 +37,7 @@ import ScrolltoTop from './components/ScrolltoTop';
 import AdminVechile from './components/Admin/AdminVechile';
 import HospitalBloodInfo from './components/Hospitalpages/HospitalBloodInfo';
 import AllRequests from './components/AllRequests';
+import EmergencyRequest from './components/EmeregencyRequest';
 function App() {
 
   const [token, setToken] = useState('');
@@ -96,6 +97,8 @@ function App() {
             } />
 
             <Route path="/bloodRequirement" element={<BloodRequirement setToken={setToken} />
+            } />
+            <Route path="/EmergencyBloodRequest" element={<EmergencyRequest />
             } />
 
             <Route path="/donationDetails" element={token ? <DonationDetails setToken={setToken} />

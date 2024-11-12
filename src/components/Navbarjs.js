@@ -1,13 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import logo from './images/bloodlogo.png';
 import { Navbar } from 'react-bootstrap';
+import { FaFontAwesome } from 'react-icons/fa';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCross, faHamburger, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Navbarjs = ({ setToken, setsignup }) => {
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current location (path)
+
+  const isDashboard = location.pathname === '/'; // Check if the path is the root '/'
+
   const [token, settoken] = useState('');
   const [htoken, sethtoken] = useState('');
   const [atoken, setatoken] = useState('');
@@ -76,19 +83,56 @@ const Navbarjs = ({ setToken, setsignup }) => {
           <Navbar.Brand as={Link} to="/" className="flex-grow-1 flex ml-4">
             <img style={{ height: '50px' }} src={logo} alt="logo" />
           </Navbar.Brand>
-          <button
-            className="hamburger-icon"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          >
-            &#9776;
-          </button>
+          {isDashboard ? (
+            <>
+              <div className={`flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex`}>
+                <Link to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Post Blood Request
+                </Link>
+                <Link to="/RequestsNearMe" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Requests Near Me
+                </Link>
+                <Link to={`/bloodRequirement?query=UserBloodRequests`} onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Your Blood Requests
+                </Link>
+                <Link to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Your Camp Requests
+                </Link>
+                <Link to="/home" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Home
+                </Link>
+                <Link to="/about" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  About
+                </Link>
+                <Link to="/userprofile" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Profile
+                </Link>
+                <button onClick={handleLogout} className="text-gray-800 hover:text-red-600 md:px-2">
+                  Logout
+                </button>
+              </div>
+              <div className="flex items-center md:hidden p-4">
+                <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+                <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center">
+              <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+              <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+            </div>
+          )}
+
+
+
+
         </Container>
       </Navbar>
 
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`sidebar ${sidebarOpen ? 'open sm:mt-[118px] mt-[173px]' : 'mt-[173px] sm:mt-[118px]'} overflow-y-auto sidebar-responsive-height`}
+        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[173px] sm:mt-[118px]'} ${isDashboard ?' mt-[203px]':'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
       // style={{ maxHeight: 'md:calc(100vh - 118px) calc(100vh-148px)' }}
       >
         <Nav className="sidebar-nav">
@@ -157,7 +201,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/loginsignup" onClick={() => setSidebarOpen(false)}>
+              <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
                 Emergency Blood Request
               </Nav.Link>
               <Nav.Link as={Link} to="#" onClick={() => setSidebarOpen(false)}>
@@ -175,6 +219,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
             </>
           )}
         </Nav>
+
       </div>
 
       {/* Sidebar Styling */}
