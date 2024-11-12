@@ -48,6 +48,17 @@ const BloodRequirement = ({ setToken }) => {
 
 
     const pageLocation = useLocation();
+    const queryParams = new URLSearchParams(pageLocation.search); // Use `pageLocation` here
+    const queryValue = queryParams.get('query');
+
+    useEffect(() => {
+        if (queryValue) {
+            setSelectedField(queryValue);
+        } else {
+            setSelectedField("bloodRequest");
+        }
+    }, [queryValue]); // Dependency array to run effect only when `queryValue` changes
+
     setToken(localStorage.getItem('token'))
     const handleSubmit = async () => {
         const formData = {
@@ -191,10 +202,10 @@ const BloodRequirement = ({ setToken }) => {
     }
     return (
         <>
-            <div className="flex space-x-4 mb-4 justify-center">
+            {/* <div className="flex space-x-4 mb-4 justify-center w-full overflow-scroll">
                 <button
                     onClick={() => handleLabelClick("bloodRequest")}
-                    className="px-6 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition duration-300 shadow-lg">
+                    className="px-6 ml-6 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600 transition duration-300 shadow-lg">
                     Blood Request Form
                 </button>
 
@@ -215,7 +226,7 @@ const BloodRequirement = ({ setToken }) => {
                     className="px-6 py-2 bg-purple-500 text-white font-semibold rounded-md hover:bg-purple-600 transition duration-300 shadow-lg">
                     Your Camp Requests
                 </button>
-            </div>
+            </div> */}
 
             <div className='flex flex-wrap'>
                 {/* // camp post  */}
@@ -318,16 +329,7 @@ const BloodRequirement = ({ setToken }) => {
             </div>
 
             {selectedField === "UserCampRequests" && (
-                // <div className='flex flex-wrap items-center justify-center'>
-
-                //     <h2 className="text-2xl font-bold mb-4">Posted Camps</h2>
-                //     <button
-                //         onClick={() => setcampDisplay(prevState => !prevState)} // Toggles the state
-                //         className='bg-blue-500 mb-4 ml-3 px-2 text-white py-2 rounded-full hover:bg-blue-600'>
-                //         {campDisplay ? 'Hide Camps' : 'Show Camps'} {/* Conditionally render button text */}
-                //     </button>
-                // </div>
-                <div className="flex flex-wrap ml-1 mr-1 justify-center gap-4">
+                <div className="flex flex-wrap ml-1 mt-16 mb-20 mr-1 justify-center gap-4">
                     {campRequests.length > 0 ? (
                         campRequests.map((camp) => (
                             <div
@@ -355,9 +357,9 @@ const BloodRequirement = ({ setToken }) => {
             )}
 
 
-            <h2 className='mt-2 mb-2 text-red-700 text-2xl p-2 border'>Your Requests</h2>
+            {/* <h2 className='mt-2 mb-2 text-red-700 text-2xl p-2 border'>Your Requests</h2> */}
             {selectedField === "UserBloodRequests" && (
-                <div className='user-Requests flex flex-wrap lg:text-2xl sm:text-2xl xl:text-2xl md:text-xl  text-xl ml-2 mr-2 mb-10  items-center justify-evenly'>
+                <div className='user-Requests flex flex-wrap lg:text-2xl sm:text-2xl xl:text-2xl md:text-xl  text-xl ml-2 mr-2 mb-10 mt-20  items-center justify-evenly'>
                     {requests.map((donater, index) => (
                         <div className='request border-4 bg-body-tertiary  py-2  px-3  rounded-xl hover:shadow-2xl'>
                             <Link to={`/donorsResponse?requestNumber=${donater._id}`} className='links-decorations'>

@@ -1,6 +1,6 @@
 // app.js
 
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -36,10 +36,13 @@ import ButtonComponent from './components/Button/ButtonComponent';
 import ScrolltoTop from './components/ScrolltoTop';
 import AdminVechile from './components/Admin/AdminVechile';
 import HospitalBloodInfo from './components/Hospitalpages/HospitalBloodInfo';
+import AllRequests from './components/AllRequests';
 function App() {
 
   const [token, setToken] = useState('');
   const [adminToken, setAdminToken] = useState('');
+  const location = useLocation(); // Get current location
+  const isLoginPage = location.pathname === "/loginsignup";
 
   const checkAuth = () => {
     const storedToken = localStorage.getItem('token');
@@ -58,40 +61,111 @@ function App() {
   return (
     <div className="App">
       <TopHeader />
-      <Navbarjs setsignup={setsignup} setToken={setToken} />
+
+      {!isLoginPage && <Navbarjs setsignup={setsignup} setToken={setToken} />
+      }
       <div>
-        {/* <ButtonComponent/> */}
-        <ScrolltoTop/>
+        {/* <ButtonComponent/>
+             */}
+        <ScrolltoTop />
+
         <ToastContainer className='mt-10 ml-1 mr-1' />
-        <Routes>
-          <Route path="/loginsignup" element={token ? <Navigate to="/home" /> : <LoginSignup setsignup={setsignup} signup={signup} setToken={setToken} />} />
-          <Route path="/admin" element={adminToken ? <AdminPanel setAdminToken={setAdminToken} /> : <Navigate to="/adminLogin" />} />
-          <Route path="/adminLogin" element={adminToken ? <Navigate to="/admin" /> : <AdminLogSign setAdminToken={setAdminToken} />} />
-          <Route path="/home" element={token ? <Hero setToken={setToken} /> : <Navigate to="/" />} />
-          <Route path="/bloodRequirement" element={<BloodRequirement setToken={setToken} />} />
-          <Route path="/donationDetails" element={token ? <DonationDetails setToken={setToken} /> : <Navigate to="/" />} />
-          <Route path="/donorsResponse" element={<DonorResponse setToken={setToken} />} />
-          <Route path="/userDetails" element={adminToken ? <UserDetails /> : <Navigate to="/adminLogin" />} />
-          <Route path='/hospitalDetails' element={adminToken ? <HospitalDetails /> : <Navigate to='/adminLogin' />} />
-          <Route path="/donorsResponseAdmin" element={<DonorResponseAdmin />} />
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/' element={<WelcomePage />} />
-          <Route path='/hospitalLoginSignup' element={<HospitalLoginSignup />} />
-          <Route path='/hospitalDashboard' element={<HospitalDashboard />} />
-          <Route path='/manageUsers' element={<AdminManageUsers />} />
-          <Route path='/HospitalDonorsResponses' element={<HospitalDonorsResponsesDetails />} />
-          <Route path='/hospitaldonationDetails' element={<HospitalDonationDetails />} />
-          <Route path='/donorresponsehospitaladmin' element={<DonorResponseHospitalAdmin />} />
-          <Route path='/userprofile' element={<UserProfile />} />
-          <Route path='/eventsadmin' element={<EventsAdmin />} />
-          <Route path='/forgetPassword' element={<ForgetPassword />} />
-          <Route path='/adminimageupload' element={<UpdateImageComponent />} />
-          {/* <Route path='/volunteervechile' element={<VolunteerVechile />} /> */}
-          <Route path='/adminvechile' element={<AdminVechile/>} />
-          <Route path='/hospitalbloodinfo' element={<HospitalBloodInfo/>} />
-        </Routes>
+
+        <div className='Sidebar-container'>
+
+        </div>
+        <div className='Routes-container'>
+          <Routes>
+            <Route path="/loginsignup" element={token ? <Navigate to="/home" />
+              : <LoginSignup setsignup={setsignup} signup={signup} setToken={setToken} />
+            } />
+
+            <Route path="/admin" element={adminToken ? <AdminPanel setAdminToken={setAdminToken} />
+              : <Navigate to="/adminLogin" />
+            } />
+
+            <Route path="/adminLogin" element={adminToken ? <Navigate to="/admin" />
+              : <AdminLogSign setAdminToken={setAdminToken} />
+            } />
+
+            <Route path="/home" element={token ? <Hero setToken={setToken} />
+              : <Navigate to="/" />
+            } />
+
+            <Route path="/RequestsNearMe" element={<AllRequests />
+            } />
+
+            <Route path="/bloodRequirement" element={<BloodRequirement setToken={setToken} />
+            } />
+
+            <Route path="/donationDetails" element={token ? <DonationDetails setToken={setToken} />
+              : <Navigate to="/" />
+            } />
+
+            <Route path="/donorsResponse" element={<DonorResponse setToken={setToken} />
+            } />
+
+            <Route path="/userDetails" element={adminToken ? <UserDetails />
+              : <Navigate to="/adminLogin" />
+            } />
+
+            <Route path='/hospitalDetails' element={adminToken ? <HospitalDetails />
+              : <Navigate to='/adminLogin' />
+            } />
+
+            <Route path="/donorsResponseAdmin" element={<DonorResponseAdmin />
+            } />
+
+            <Route path='/about' element={<AboutPage />
+            } />
+
+            <Route path='/' element={<WelcomePage />
+            } />
+
+            <Route path='/hospitalLoginSignup' element={<HospitalLoginSignup />
+            } />
+
+            <Route path='/hospitalDashboard' element={<HospitalDashboard />
+            } />
+
+            <Route path='/manageUsers' element={<AdminManageUsers />
+            } />
+
+            <Route path='/HospitalDonorsResponses' element={<HospitalDonorsResponsesDetails />
+            } />
+
+            <Route path='/hospitaldonationDetails' element={<HospitalDonationDetails />
+            } />
+
+            <Route path='/donorresponsehospitaladmin' element={<DonorResponseHospitalAdmin />
+            } />
+
+            <Route path='/userprofile' element={<UserProfile />
+            } />
+
+            <Route path='/eventsadmin' element={<EventsAdmin />
+            } />
+
+            <Route path='/forgetPassword' element={<ForgetPassword />
+            } />
+
+            <Route path='/adminimageupload' element={<UpdateImageComponent />
+            } />
+
+            <Route path='/volunteervechile' element={<VolunteerVechile />
+            } />
+
+            <Route path='/adminvechile' element={<AdminVechile />
+            } />
+
+            <Route path='/hospitalbloodinfo' element={<HospitalBloodInfo />
+            } />
+
+          </Routes>
+        </div>
       </div>
-      <Footer />
+      {!isLoginPage && <Footer />
+      }
     </div>
   );
 }
