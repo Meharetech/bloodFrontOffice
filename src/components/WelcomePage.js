@@ -311,7 +311,7 @@ const WelcomePage = () => {
                                 <img
                                     src={bloodDonationImage}
                                     alt="Blood Donation"
-                                    className="rounded-lg shadow-lg object-cover  w-full h-64 sm:h-80 lg:h-96"
+                                    className="rounded-lg shadow-lg object-cover  w-full "
                                 />
                             </div>
 
