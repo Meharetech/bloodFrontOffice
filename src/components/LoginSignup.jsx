@@ -202,16 +202,16 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
         backgroundImage: signup
           ? `url(${bloodRegister})`
           : `url(${loginleftImage}), url(${loginrightImage})`,
-        backgroundSize: signup ? '56%' : '50%, 50%',
+        backgroundSize: signup ? '56%' : '40%, 40%',
         backgroundPosition: signup ? 'right' : 'left, right',
         backgroundRepeat: 'no-repeat, no-repeat' // Prevent images from repeating
       }}
     >
 
       <h1>{signupbuttonclick}</h1>
-      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"}  bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? "md:ml-32 ml-12" : ""}`} data-aosx="fade-left">
+      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"}  bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? "md:ml-32 ml-12 mt-9 mb-36" : ""}`} data-aosx="fade-left">
         {/* Logo and Title */}
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm" data-aosx="zoom-in">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm " data-aosx="zoom-in">
           <img alt="Your Company" src={logo} className="mx-auto h-10 w-auto" />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             {signup ? 'Sign Up to Your Account' : 'Log in to Your Account'}
@@ -226,8 +226,6 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
               gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' // Use minmax to define responsive columns
             }}
           >
-
-
 
             {/* Phone Number Input */}
             <div data-aosx="fade-up" className={signupbuttonclick ? "hidden" : "block"} >
@@ -389,57 +387,56 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
               </div>
             )}
 
-            {/* Login and Signup Buttons */}
-            {signup ? (
-              <div data-aosx="fade-left0" className={signupbuttonclick ? "hidden" : "block"}>
-                <button
-                  onClick={handleSignup}
-                  className="w-full flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Sign up
-                </button>
-              </div>
-            ) : (
-              <>
-                <div data-aosx="fade-left">
-                  <button
-                    onClick={handleLogin}
-                    className="w-full flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Login
-                  </button>
-                </div>
-
-                {/* Create Account Button */}
-                <div className="mt-4" data-aosx="fade-left">
-                  <button
-                    onClick={() => setsignup(true)}
-                    className="w-full flex justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
-                  >
-                    Create Account
-                  </button>
-                </div>
-              </>
-            )}
-
-            {/* Toggle between Login and Signup */}
-            {signup && (
-              <div className="mt-4" data-aosx="fade-left" >
-                <button
-                  onClick={() => { setsignup(false); setsignupbutton(false) }}
-                  className="w-full flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Already have an account? Login
-                </button>
-              </div>
-            )}
-
-
-            <div>
-              {!signup &&
-                <Link className='text-blue-700' to="/forgetPassword">Forget Password</Link>
-              }
+          </div>
+          {/* Login and Signup Buttons */}
+          {signup ? (
+            <div data-aosx="fade-left" className={`${signupbuttonclick ? "hidden" : "flex justify-center"} mt-6`}>
+              <button
+                onClick={handleSignup}
+                className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign up
+              </button>
             </div>
+          ) : (
+            <div>
+              <div data-aosx="fade-left" className='mt-6 flex justify-center'>
+                <button
+                  onClick={handleLogin}
+                  className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Log in
+                </button>
+              </div>
+
+              <div className="mt-6 flex justify-center" data-aosx="fade-left">
+                <button
+                  onClick={() => setsignup(true)}
+                  className=" flex justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+                >
+                  Create Account
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Toggle between Login and Signup */}
+          {signup && (
+            <div className="mt-9 flex justify-center" data-aosx="fade-left" >
+              <button
+                onClick={() => { setsignup(false); setsignupbutton(false) }}
+                className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Already have an account ? Login
+              </button>
+            </div>
+          )}
+
+
+          <div>
+            {!signup &&
+              <Link className='text-blue-700' to="/forgetPassword">Forget Password</Link>
+            }
           </div>
         </div>
       </div>
