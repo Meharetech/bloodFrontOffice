@@ -88,7 +88,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`sidebar ${sidebarOpen ? 'open sm:mt-[118px] mt-[173px]' : 'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
+        className={`sidebar ${sidebarOpen ? 'open sm:mt-[118px] mt-[173px]' : 'mt-[173px] sm:mt-[118px]'} overflow-y-auto sidebar-responsive-height`}
       // style={{ maxHeight: 'md:calc(100vh - 118px) calc(100vh-148px)' }}
       >
         <Nav className="sidebar-nav">
