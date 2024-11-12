@@ -291,7 +291,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                 </div>
                 <div data-aosx="fade-up">
                   <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                    Ngo Name
+                    Ngo Name {`(Optional)`}
                   </label>
                   <div className="mt-2">
                     <input
