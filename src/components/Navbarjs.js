@@ -157,7 +157,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/loginsignup" onClick={() => setSidebarOpen(false)}>
+              <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
                 Emergency Blood Request
               </Nav.Link>
               <Nav.Link as={Link} to="#" onClick={() => setSidebarOpen(false)}>

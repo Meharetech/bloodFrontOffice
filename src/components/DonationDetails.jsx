@@ -97,8 +97,6 @@ const DonationDetails = ({ setToken }) => {
             return;
         }
 
-
-
         try {
             const response = await axios.post(`${BaseUrl}/addDonorToTheRequest`, data, {
                 headers: { Authorization: token }

@@ -228,6 +228,7 @@ import { BaseUrl } from './Util/util';
 
 const AllRequests = () => {
     const [donaters, setDonaters] = useState([]);
+    const [emergencyRequests, setEmergencyRequests] = useState([]);
     const [hospitalRequest, setHospitalRequest] = useState([]);
     const [campRequests, setCampRequests] = useState([]);
     const [location, setLocation] = useState({ longitude: null, latitude: null });
@@ -244,6 +245,7 @@ const AllRequests = () => {
                 setDonaters(response.data.donaters || []);
                 setCampRequests(response.data.camps || []);
                 setHospitalRequest(response.data.hospitalRequests || []);
+                setEmergencyRequests(response.data.emergencyRequest || [])
             } catch (error) {
                 console.error(error);
             }
@@ -319,7 +321,49 @@ const AllRequests = () => {
             )}
 
             <div data-aos="fade-zoom">
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center mt-28 mb-28">
+                    <h2 className="text-2xl w-96 text-white rounded-full font-bold bg-red-600">Emergency Request Near You</h2>
+                </div>
+                <ul className="donater-grid ml-2 mr-2 mt-2 flex items-center lg:text-2xl justify-evenly">
+                    {emergencyRequests.map((donater, index) => (
+                        <Link to={`/donationDetails?donationId=${donater._id}`} key={index}>
+                            <li className="border-4 bg-slate-50">
+                                <div>
+                                    <div className="flex justify-between">
+                                        <p>Required Blood Group</p>
+                                        <p className="text-white flex justify-center items-center rounded-2xl px-4 py-1 bg-red-500">
+                                            {donater.bloodGroup.toUpperCase()}
+                                        </p>
+                                    </div>
+                                    <p>
+                                        <a
+                                            href={`https://wa.me/${donater.phoneNumber}?text=${encodeURIComponent(`Blood request for group ${donater.bloodGroup}. Location: https://www.google.com/maps?q=${donater.location.latitude},${donater.location.longitude}`)}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Send WhatsApp Message
+                                        </a>
+                                    </p>
+                                    <p>Requested at - {new Date(donater.dateOfQuery).toLocaleTimeString()}</p>
+                                    <p>
+                                        <a
+                                            href={`https://www.google.com/maps?q=${donater.location.latitude},${donater.location.longitude}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            View Location on Google Maps
+                                        </a>
+                                    </p>
+                                </div>
+                                <p>Donors Responded - {donater.donorsResponse.length}</p>
+                            </li>
+                        </Link>
+                    ))}
+                </ul>
+            </div>
+
+            <div data-aos="fade-zoom">
+                <div className="flex items-center justify-center mt-28 mb-28">
                     <h2 className="text-2xl w-96 text-white rounded-full font-bold bg-red-600">Blood Request Near You</h2>
                 </div>
                 <ul className="donater-grid ml-2 mr-2 mt-2 flex items-center lg:text-2xl justify-evenly">
