@@ -9,6 +9,8 @@ const EmergencyRequest = () => {
     const [bloodGroup, setBloodGroup] = useState('');
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [city, setCity] = useState('')
+    const [hospitalName, setHospitalName] = useState('');
     const [otp, setOtp] = useState('');
     const [isOtpSent, setIsOtpSent] = useState(false);
     const [location, setLocation] = useState({
@@ -65,7 +67,7 @@ const EmergencyRequest = () => {
             return;
         }
 
-        const userData = { bloodGroup, location, name, phoneNumber };
+        const userData = { bloodGroup, location, name, phoneNumber, city, hospitalName };
 
         try {
             const response = await axios.post(`${BaseUrl}/sendEmergencyBloodRequest`, userData);
@@ -167,7 +169,7 @@ const EmergencyRequest = () => {
                     />
                     <br />
                     <label htmlFor="phoneNumber" className="form-label">
-                        Enter Your Phone Number
+                        Enter Details
                     </label>
                     <br />
                     <input
@@ -177,6 +179,24 @@ const EmergencyRequest = () => {
                         className="form-input"
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                    <br />
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="City Name"
+                        className="form-input"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                    />
+                    <br />
+                    <input
+                        type="text"
+                        id="hospitalName"
+                        placeholder="Hospital Name"
+                        className="form-input"
+                        value={hospitalName}
+                        onChange={(e) => setHospitalName(e.target.value)}
                     />
                     <br />
                     <button className="form-button !bg-red-400 hover:!bg-red-500" onClick={bloodRequest}>

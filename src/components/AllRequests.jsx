@@ -135,6 +135,12 @@ const AllRequests = () => {
                                             View Location on Google Maps
                                         </a>
                                     </p>
+                                    <p className="text-white flex justify-center items-center rounded-2xl px-4 py-1 bg-red-500">
+                                        {donater.city.toUpperCase()}
+                                    </p>
+                                    <p className="text-white flex justify-center items-center rounded-2xl px-4 py-1 bg-red-500">
+                                        {donater.hospitalName.toUpperCase()}
+                                    </p>
                                 </div>
                                 <p>Donors Responded - {donater.donorsResponse.length}</p>
                             </li>
