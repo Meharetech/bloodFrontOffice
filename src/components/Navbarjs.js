@@ -52,13 +52,15 @@ const Navbarjs = ({ setToken, setsignup }) => {
     };
   }, [sidebarOpen]);
 
-  const handleLogout = () => {
+  const handleLogout = async() => {
+    await localStorage.clear();
     localStorage.removeItem('token');
     localStorage.removeItem('htoken');
     localStorage.removeItem('adminToken');
     setToken('');
     navigate('/');
     setSidebarOpen(false);
+    window.location.reload();
   };
 
   const handleSignup = () => {
@@ -130,7 +132,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Link to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
                 Emergency Blood Request
               </Link>
-              <Link to="/volunteervehicle" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+              <Link to="/volunteervechile" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
                 Volunteer Vehicle
               </Link>
               <Link to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
@@ -226,7 +228,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
                 Emergency Blood Request
               </Nav.Link>
-              <Nav.Link as={Link} to="#" onClick={() => setSidebarOpen(false)}>
+              <Nav.Link as={Link} to="/volunteervechile" onClick={() => setSidebarOpen(false)}>
                 Volunteer Vehicle
               </Nav.Link>
               <Nav.Link as={Link} to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)}>
