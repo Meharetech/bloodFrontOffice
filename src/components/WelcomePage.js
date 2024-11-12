@@ -41,17 +41,17 @@ const WelcomePage = () => {
 
     const testimonials = [
         {
-            name: "John Doe",
+            name: "Sahil",
             testimonial: "Donating blood was a simple process and I felt great knowing I was helping others. Highly recommend everyone to donate!",
             image: donor1,
         },
         {
-            name: "Jane Smith",
+            name: "Rahul",
             testimonial: "I was nervous at first, but the staff made me feel comfortable. It’s an easy way to make a big difference.",
             image: donor2,
         },
         {
-            name: "Emily Johnson",
+            name: "Seema",
             testimonial: "Every donation can save lives. It's a small effort with a huge impact. Don’t hesitate to give blood!",
             image: donor3,
         }
@@ -311,7 +311,7 @@ const WelcomePage = () => {
                                 <img
                                     src={bloodDonationImage}
                                     alt="Blood Donation"
-                                    className="rounded-lg shadow-lg object-cover  w-full h-64 sm:h-80 lg:h-96"
+                                    className="rounded-lg shadow-lg object-cover  w-full "
                                 />
                             </div>
 
