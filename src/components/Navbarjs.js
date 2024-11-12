@@ -52,7 +52,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
     };
   }, [sidebarOpen]);
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     await localStorage.clear();
     localStorage.removeItem('token');
     localStorage.removeItem('htoken');
@@ -85,8 +85,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
           <Navbar.Brand as={Link} to="/" className="flex-grow-1 flex ml-4">
             <img style={{ height: '50px' }} src={logo} alt="logo" />
           </Navbar.Brand>
-          {token ? (
-            isDashboard ? (
+          {token ? (isDashboard ? (
             <>
               <div className={`flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex`}>
                 <Link to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
@@ -127,7 +126,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
           )
           ) : (
             <>
-              <Link to="/" onClick={() => setSidebarOpen(false)}  className="text-gray-800 hover:text-red-600 md:px-2">
+              <Link to="/" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
                 Home
               </Link>
               <Link to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
