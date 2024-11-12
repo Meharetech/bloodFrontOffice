@@ -126,30 +126,32 @@ const Navbarjs = ({ setToken, setsignup }) => {
           )
           ) : (
             <>
-              <Link to="/" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                Home
-              </Link>
-              <Link to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                Emergency Blood Request
-              </Link>
-              <Link to="/volunteervechile" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                Volunteer Vehicle
-              </Link>
-              <Link to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                Hospital / Organization
-              </Link>
-              <Link to="/loginsignup" onClick={handleLogin} className="text-gray-800 hover:text-red-600 md:px-2">
-                Login
-              </Link>
-              <Link to="/loginsignup" onClick={handleSignup} className="text-gray-800 hover:text-red-600 md:px-2">
-                Register As a Donor
-              </Link>
+              <div className={`flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex`}>
+                <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
+                  Home
+                </Nav.Link>
+                <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
+                  Emergency Blood Request
+                </Nav.Link>
+                <Nav.Link as={Link} to="/volunteervechile" onClick={() => setSidebarOpen(false)}>
+                  Volunteer Vehicle
+                </Nav.Link>
+                <Nav.Link as={Link} to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)}>
+                  Hospital / Organization
+                </Nav.Link>
+                <Nav.Link as={Link} to="/loginsignup" onClick={handleLogin}>
+                  Login
+                </Nav.Link>
+                <Nav.Link as={Link} to="/loginsignup" onClick={handleSignup}>
+                  Register As a Donor
+                </Nav.Link>
+              </div>
+              <div className="flex items-center md:hidden p-4">
+                <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+                <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+              </div>
             </>
           )}
-
-
-
-
         </Container>
       </Navbar>
 
