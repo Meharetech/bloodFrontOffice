@@ -19,7 +19,7 @@ const TopHeader = () => {
 
       {/* Right Side: Social Media Icons */}
       <div className="flex space-x-4 mt-2 md:mt-0">
-        <a href="#" className="text-white hover:text-gray-500 transition duration-300">
+        <a href="#" className="text-white hover:text-gray-500 transition duration-300"> 
           <FaFacebook />
         </a>
         <a href="#" className="text-white hover:text-gray-500 transition duration-300">
