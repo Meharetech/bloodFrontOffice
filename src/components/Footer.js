@@ -27,13 +27,13 @@ const Footer = () => {
               <h3 className="text-lg font-semibold">Follow Us</h3>
               <div className="mt-2 flex space-x-4 items-center justify-center">
                 <a href="#" className="text-gray-400 hover:text-gray-300">
-                  <img className='h-8' src={instasvg}/>
+                  <img className='h-8' src={instasvg} />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-gray-300">
-                <img className='h-8' src={twittersvg}/>
+                  <img className='h-8' src={twittersvg} />
                 </a>
                 <a href="#" className="text-gray-400 hover:text-gray-300">
-                <img className='h-8' src={linkedinsvg}/>
+                  <img className='h-8' src={linkedinsvg} />
                 </a>
               </div>
             </div>
