@@ -60,7 +60,7 @@ const HospitalLoginSignup = () => {
   // If htoken is already present, navigate to dashboard (or any other page)
   useEffect(() => {
     if (htoken) {
-      navigate('/hospitalDashboard');  // Replace with the correct path for the logged-in dashboard
+      navigate('/HospitalHome');  // Replace with the correct path for the logged-in dashboard
     }
   }, [htoken, navigate]);
 
@@ -162,13 +162,13 @@ const HospitalLoginSignup = () => {
       window.scroll(0, 0)
       toast.success(response.data.message);
       navigate('/hospitalHome');  // Redirect after successful login
+      window.location.reload();
     } catch (error) {
       console.error('Login failed:', error);
       toast.error(error.response.data.error)
       toast.error(error.response.data.message)
     }
     setLoggingIn(!loggingIn)
-    window.location.reload();
   };
 
   // Handle signup logic
