@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import Accordion from 'react-bootstrap/Accordion';
 import { FaHeartbeat, FaHandHoldingHeart, FaTint } from 'react-icons/fa';
 import { Nav } from 'react-bootstrap';
+import whydonate from '../components/images/whyDonate.jpeg'
 
 const Hero = () => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const Hero = () => {
     <div className="hero-container" data-aos="fade-left">
       {/* <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 items-center justify-between p-10 sm:p-24">
        */}
-      <div className='flex justify-center'
+      <div className='block sm:flex justify-evenly'
       // 'items-center justify-between p-10 sm:p-24'      
       >
         {/* <div className="ml-2 mr-2 mt-2"> */}
@@ -27,8 +28,10 @@ const Hero = () => {
             Volunteer Vehicle
           </Nav.Link>
         </div> */}
-
-        <div className="w-[500px] mt-10">
+        <div className=" sm:w-2/5 mt-10">
+          <img src={whydonate} alt="whyDonateImage" className='w-full h-full' />
+        </div>
+        <div className=" sm:w-2/5 mt-10">
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header>

@@ -9,6 +9,7 @@ const VolunteerVehicle = () => {
     ownerName: '',
     vehicleType: 'Car',
     licensePlate: '',
+    pincode: '',
     capacity: 1,
     contactNumber: '',
     availability: true,
@@ -41,6 +42,10 @@ const VolunteerVehicle = () => {
     // Validate expiration days between 1 and 7
     if (formData.availableDays < 1 || formData.availableDays > 7) {
       newErrors.availableDays = 'Expiration days must be between 1 and 7';
+    }
+
+    if (formData.pincode.length !== 6) {
+      newErrors.pincode = 'Pincode must be 6 digits';
     }
 
     return newErrors;
@@ -83,6 +88,7 @@ const VolunteerVehicle = () => {
           ownerName: '',
           vehicleType: 'Car',
           licensePlate: '',
+          pincode:'',
           capacity: 1,
           contactNumber: '',
           availability: true,
@@ -161,6 +167,25 @@ const VolunteerVehicle = () => {
           />
           {errors.licensePlate && (
             <p className='text-red-500 text-sm mt-1'>{errors.licensePlate}</p>
+          )}
+        </div>
+
+        {/* Pincode */}
+        <div className='mb-4'>
+          <label className='block text-gray-700 mb-2' htmlFor='pincode'>
+            Pincode
+          </label>
+          <input
+            type='text'
+            id='pincode'
+            name='pincode'
+            value={formData.pincode}
+            onChange={handleChange}
+            required
+            className={`w-full px-3 py-2 border rounded ${errors.pincode ? 'border-red-500' : ''}`}
+          />
+          {errors.pincode && (
+            <p className='text-red-500 text-sm mt-1'>{errors.pincode}</p>
           )}
         </div>
 

@@ -251,7 +251,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                 <input
                   id="phone"
                   name="phone"
-                  type="number"
+                  type="phone"
                   required
                   placeholder="Phone Number"
                   value={phoneNumber}
