@@ -7,7 +7,7 @@ import logo from './images/bloodlogo.png';
 import { Navbar } from 'react-bootstrap';
 import { FaEvernote, FaFontAwesome, FaHSquare } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCar, faCircleInfo, faHome, faHospital, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCar, faCircleInfo, faDroplet, faHome, faHospital, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import bloodNearMe from '../images/bloodnearme.png'
 import home from '../images/home.png'
 import postBloodRequest from '../images/postbloodreqmain.png'
@@ -17,6 +17,7 @@ import yourCampRequests from '../images/yourcampreq.png'
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons/faUserAlt';
 import { faUserGear } from '@fortawesome/free-solid-svg-icons/faUserGear';
 import { FaAlgolia, FaHouseChimney } from 'react-icons/fa6';
+import EmergencyRequest from './EmeregencyRequest';
 
 const Navbarjs = ({ setToken, setsignup }) => {
   const navigate = useNavigate();
@@ -241,7 +242,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[173px] sm:mt-[118px]'} ${isDashboard ? ' mt-[203px]' : 'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
+        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[173px] sm:mt-[118px]'} ${isDashboard ? ' mt-[103px]' : 'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
       // style={{ maxHeight: 'md:calc(100vh - 118px) calc(100vh-148px)' }}
       >
         <Nav className="sidebar-nav">
@@ -319,23 +320,23 @@ const Navbarjs = ({ setToken, setsignup }) => {
             </>
           ) : (
             <>
-              <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)}>
-                Home
+              <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faHome} /><p>Home</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
-                Emergency Blood Request
+              <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <img src={postBloodRequest} alt="" className="w-5 h-5" /> Emergency Blood Request
               </Nav.Link>
-              <Nav.Link as={Link} to="/volunteervechile" onClick={() => setSidebarOpen(false)}>
-                Volunteer Vehicle
+              <Nav.Link as={Link} to="/volunteervechile" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faCar} /><p>Volunteer Vehicle</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)}>
-                Hospital / Organization
+              <Nav.Link as={Link} to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faHospital} /><p>Hospital / Organization</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/loginsignup" onClick={handleLogin}>
-                Login
+              <Nav.Link as={Link} to="/loginsignup" onClick={handleLogin} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faUser} />Login
               </Nav.Link>
-              <Nav.Link as={Link} to="/loginsignup" onClick={handleSignup}>
-                Register As a Donor
+              <Nav.Link as={Link} to="/loginsignup" onClick={handleSignup} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faDroplet} /> Register As a Donor
               </Nav.Link>
             </>
           )}
@@ -388,7 +389,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
   }
 
   .sidebar-responsive-height {
-    max-height: calc(100vh - 148px);
+    max-height: calc(100vh - 68px);
   }
   @media (min-width: 768px) {
     .sidebar-responsive-height {
