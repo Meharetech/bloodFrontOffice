@@ -105,48 +105,55 @@ const AllRequests = () => {
                 <div className="flex items-center justify-center mt-28 mb-28">
                     <h2 className="text-2xl w-96 text-white rounded-full font-bold bg-red-600">Emergency Request Near You</h2>
                 </div>
-                <ul className="donater-grid ml-2 mr-2 mt-2 flex items-center lg:text-2xl justify-evenly">
+                <ul className="donater-grid ml-2 mr-2 mt-2 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {emergencyRequests.map((donater, index) => (
-                        <Link to={`/donationDetails?donationId=${donater._id}`} key={index}>
-                            <li className="border-4 bg-slate-50">
+                        <Link to={`/donationDetails?donationId=${donater._id}`} key={index} className="block">
+                            <li className="border-4 rounded-lg bg-slate-50 p-4 shadow-md flex flex-col justify-between h-full">
                                 <div>
-                                    <div className="flex justify-between">
-                                        <p>Required Blood Group</p>
-                                        <p className="text-white flex justify-center items-center rounded-2xl px-4 py-1 bg-red-500">
+                                    <div className="flex justify-between mb-2">
+                                        <p className="font-semibold text-gray-700">Required Blood Group</p>
+                                        <p className="text-white text-lg font-bold rounded-2xl px-4 py-1 bg-red-500">
                                             {donater.bloodGroup.toUpperCase()}
                                         </p>
                                     </div>
-                                    <p>
+                                    <p className="mb-2">
                                         <a
                                             href={`https://wa.me/${donater.phoneNumber}?text=${encodeURIComponent(`Blood request for group ${donater.bloodGroup}. Location: https://www.google.com/maps?q=${donater.location.latitude},${donater.location.longitude}`)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            className="text-blue-500 hover:underline"
                                         >
                                             Send WhatsApp Message
                                         </a>
                                     </p>
-                                    <p>Requested at - {new Date(donater.dateOfQuery).toLocaleTimeString()}</p>
-                                    <p>
+                                    <p className="mb-2 text-gray-600">
+                                        Requested at - {new Date(donater.dateOfQuery).toLocaleTimeString()}
+                                    </p>
+                                    <p className="mb-2">
                                         <a
                                             href={`https://www.google.com/maps?q=${donater.location.latitude},${donater.location.longitude}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            className="text-blue-500 hover:underline"
                                         >
                                             View Location on Google Maps
                                         </a>
                                     </p>
-                                    <p className="text-white flex justify-center items-center rounded-2xl px-4 py-1 bg-red-500">
-                                        {donater.city.toUpperCase()}
+                                    <p className="text-white text-center font-bold rounded-2xl px-4 py-1 bg-blue-500 mb-2">
+                                        {donater?.city ? donater.city.toUpperCase() : "City not available"}
                                     </p>
-                                    <p className="text-white flex justify-center items-center rounded-2xl px-4 py-1 bg-red-500">
-                                        {donater.hospitalName.toUpperCase()}
+                                    <p className="text-white text-center font-bold rounded-2xl px-4 py-1 bg-green-500">
+                                        {donater?.hospitalName ? donater.hospitalName.toUpperCase() : "Hospital Name Not Available"}
                                     </p>
                                 </div>
-                                <p>Donors Responded - {donater.donorsResponse.length}</p>
+                                <p className="text-gray-700 font-medium mt-4">
+                                    Donors Responded - {donater.donorsResponse.length}
+                                </p>
                             </li>
                         </Link>
                     ))}
                 </ul>
+
             </div>
 
             <div data-aos="fade-zoom">

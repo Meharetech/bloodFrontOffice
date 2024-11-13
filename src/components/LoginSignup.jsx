@@ -198,6 +198,18 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
     }
   }
 
+  const handleResendOtp = async () => {
+    try {
+      const response = await axios.post(`${BaseUrl}/resendOtp`, { email });
+      console.log(response.data);
+      toast.success("OTP Resent Successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response?.data?.error || 'Failed to resend OTP');
+    }
+  };
+
+
   return (
     <div
       className={`min-h-screen flex items-center ${signup ? 'justify-start' : "justify-center"}  bg-gray-100`}
@@ -330,6 +342,12 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                   onClick={handelotpvery}
                 >
                   Verify
+                </button>
+                <button
+                  className='border-2 py-1 rounded-2xl text-white px-4 mt-3 bg-green-600'
+                  onClick={handleResendOtp}
+                >
+                  Resend Otp
                 </button>
               </div>
             )}
