@@ -5,15 +5,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import logo from './images/bloodlogo.png';
 import { Navbar } from 'react-bootstrap';
-import { FaFontAwesome } from 'react-icons/fa';
+import { FaEvernote, FaFontAwesome, FaHSquare } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAdjust, faBars, faCircleInfo, faCross, faHamburger, faInfo, faInfoCircle, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCar, faCircleInfo, faHome, faHospital, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import bloodNearMe from '../images/bloodnearme.png'
 import home from '../images/home.png'
 import postBloodRequest from '../images/postbloodreqmain.png'
 import yourBloodRequest from '../images/yourbloodreq.png'
 import postCampRequest from '../images/postbloodcampreq.png'
 import yourCampRequests from '../images/yourcampreq.png'
+import { faUserAlt } from '@fortawesome/free-solid-svg-icons/faUserAlt';
+import { faUserGear } from '@fortawesome/free-solid-svg-icons/faUserGear';
+import { FaAlgolia, FaHouseChimney } from 'react-icons/fa6';
 
 const Navbarjs = ({ setToken, setsignup }) => {
   const navigate = useNavigate();
@@ -171,33 +174,33 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   as={Link}
                   to="/home"
                   onClick={() => setSidebarOpen(false)}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Home
+                  <FontAwesomeIcon icon={faHome} />Home
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/EmergencyBloodRequest"
                   onClick={() => setSidebarOpen(false)}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Looking For Blood
+                  <img src={postBloodRequest} alt="" className="w-5 h-5" /> Emergency Blood
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/volunteervechile"
                   onClick={() => setSidebarOpen(false)}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Volunteer Vehicle
+                  <FontAwesomeIcon icon={faCar} />Volunteer Vehicle
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/hospitalLoginSignup"
                   onClick={() => setSidebarOpen(false)}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Hospital / Organization
+                  <FontAwesomeIcon icon={faHospital} />Hospital / Organization
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
@@ -205,7 +208,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   onClick={handleLogin}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Login
+                  <FontAwesomeIcon icon={faUser} /> Login
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
@@ -244,20 +247,20 @@ const Navbarjs = ({ setToken, setsignup }) => {
         <Nav className="sidebar-nav">
           {htoken ? (
             <>
-              <Nav.Link as={Link} to="/HospitalHome" onClick={() => setSidebarOpen(false)}>
-                Home
+              <Nav.Link as={Link} to="/HospitalHome" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faHome} /> <p>Home</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/HospitalPostRequest" onClick={() => setSidebarOpen(false)}>
-                Post Blood Request
+              <Nav.Link as={Link} to="/HospitalPostRequest" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <img src={postBloodRequest} alt="" className="w-5 h-5" /><p>Post Blood Request</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/HEvents" onClick={() => setSidebarOpen(false)}>
-                Events
+              <Nav.Link as={Link} to="/HEvents" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faHome} />Events
               </Nav.Link>
-              <Nav.Link as={Link} to="/hospitalProfile" onClick={() => setSidebarOpen(false)}>
-                Profile
+              <Nav.Link as={Link} to="/hospitalProfile" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faUser} className='w-5 h-5' />  Profile
               </Nav.Link>
-              <Nav.Link as={Link} to="/RegisteredMembers" onClick={() => setSidebarOpen(false)}>
-                Members
+              <Nav.Link as={Link} to="/RegisteredMembers" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faUserGear} className='w-5 h-5' /><p>Members</p>
               </Nav.Link>
               <button className="logout-button" onClick={handleLogout}>
                 Logout
