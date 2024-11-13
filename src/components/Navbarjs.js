@@ -244,8 +244,20 @@ const Navbarjs = ({ setToken, setsignup }) => {
         <Nav className="sidebar-nav">
           {htoken ? (
             <>
-              <Nav.Link as={Link} to="/hospitaldashboard" onClick={() => setSidebarOpen(false)}>
-                Dashboard
+              <Nav.Link as={Link} to="/HospitalHome" onClick={() => setSidebarOpen(false)}>
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/HospitalPostRequest" onClick={() => setSidebarOpen(false)}>
+                Post Blood Request
+              </Nav.Link>
+              <Nav.Link as={Link} to="/HEvents" onClick={() => setSidebarOpen(false)}>
+                Events
+              </Nav.Link>
+              <Nav.Link as={Link} to="/hospitalProfile" onClick={() => setSidebarOpen(false)}>
+                Profile
+              </Nav.Link>
+              <Nav.Link as={Link} to="/RegisteredMembers" onClick={() => setSidebarOpen(false)}>
+                Members
               </Nav.Link>
               <button className="logout-button" onClick={handleLogout}>
                 Logout

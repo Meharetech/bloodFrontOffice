@@ -38,18 +38,26 @@ import AdminVechile from './components/Admin/AdminVechile';
 import HospitalBloodInfo from './components/Hospitalpages/HospitalBloodInfo';
 import AllRequests from './components/AllRequests';
 import EmergencyRequest from './components/EmeregencyRequest';
+import PostBloodRequest from './components/Hospitalpages/PostBloodRequest';
+import HospitalNgoMembers from './components/Hospitalpages/HospitalNgoMembers';
+import Events from './components/Hospitalpages/Events';
+import HProfile from './components/Hospitalpages/Profile';
+import HHome from './components/Hospitalpages/Home';
 function App() {
 
   const [token, setToken] = useState('');
   const [adminToken, setAdminToken] = useState('');
+  const [htoken, setHtoken] = useState('')
   const location = useLocation(); // Get current location
   const isLoginPage = location.pathname === "/loginsignup";
 
   const checkAuth = () => {
     const storedToken = localStorage.getItem('token');
     const adminStoredToken = localStorage.getItem('adminToken');
+    const hstoredToken = localStorage.getItem('htoken')
     setToken(storedToken || '');
     setAdminToken(adminStoredToken || '')
+    setHtoken(hstoredToken || '')
   };
 
   useEffect(() => {
@@ -127,9 +135,17 @@ function App() {
 
             <Route path='/hospitalLoginSignup' element={<HospitalLoginSignup />
             } />
-
-            <Route path='/hospitalDashboard' element={<HospitalDashboard />
+            <Route path='/HospitalHome' element={<HHome />
             } />
+            <Route path='/hospitalProfile' element={<HProfile />
+            } />
+            <Route path='/HospitalPostRequest' element={<PostBloodRequest />
+            } />
+            <Route path='/RegisteredMembers' element={<HospitalNgoMembers />
+            } />
+            <Route path='/HEvents' element={<Events />
+            } />
+
 
             <Route path='/manageUsers' element={<AdminManageUsers />
             } />

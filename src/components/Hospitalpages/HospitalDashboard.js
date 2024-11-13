@@ -35,6 +35,13 @@ const HospitalDashboard = () => {
         }
     };
 
+    const handleLogOut = async () => {
+        await localStorage.clear();
+        localStorage.removeItem('token');
+        localStorage.removeItem('htoken');
+        localStorage.removeItem('adminToken');
+        window.location.reload();
+    }
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row">
             {/* Button to trigger Offcanvas - visible on small screens */}
@@ -117,7 +124,13 @@ const HospitalDashboard = () => {
                                 </button>
                             </li>
                             <li>
-                                <button onClick={() => { localStorage.clear() }} className="block w-full items-center text-left p-2 hover:bg-gray-200">
+                                <button onClick={async () => {
+                                    await localStorage.clear();
+                                    localStorage.removeItem('token');
+                                    localStorage.removeItem('htoken');
+                                    localStorage.removeItem('adminToken');
+                                    window.location.reload();
+                                }} className="block w-full items-center text-left p-2 hover:bg-gray-200">
                                     Log Out
                                 </button>
                             </li>

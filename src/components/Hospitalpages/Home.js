@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BaseUrl } from '../Util/util';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const HHome = () => {
     const [activeRequests, setActiveRequests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -70,4 +70,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HHome;

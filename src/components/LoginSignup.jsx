@@ -110,6 +110,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
       localStorage.setItem('token', response.data.token);
       setToken(response.data.token);
       console.log(response);
+      window.location.reload();
     } catch (error) {
       if (error.response && error.response.data) {
         toast.error(error.response.data.error);
@@ -119,7 +120,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
 
     }
     setLoading(false);
-    window.location.reload();
+
   };
 
   const handleSignup = async () => {

@@ -21,10 +21,12 @@ export default function AdminLogSign({ setAdminToken }) {
             localStorage.setItem('adminToken', response.data.token);
             setAdminToken(response.data.token);
             console.log(response);
+            window.location.reload();
         } catch (error) {
             console.error('Login failed:', error);
             alert('Login failed');
         }
+
     };
 
     return (
