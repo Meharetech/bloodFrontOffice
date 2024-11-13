@@ -20,6 +20,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
   const location = useLocation(); // Get the current location (path)
 
   const isDashboard = location.pathname === '/'; // Check if the path is the root '/'
+  const isHome = location.pathname === '/home'; // Check if the path is the root '/'
 
   const [token, settoken] = useState('');
   const [htoken, sethtoken] = useState('');
@@ -87,108 +88,67 @@ const Navbarjs = ({ setToken, setsignup }) => {
         expand="lg"
         className=" bg-body-tertiary position-sticky top-0 border z-20"
       >
-        {/* <Container fluid style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-          <Navbar.Brand as={Link} to="/" className="flex-grow-1 flex ml-4">
-            <img style={{ height: '50px' }} src={logo} alt="logo" />
-          </Navbar.Brand>
-          {token ? (isDashboard ? (
-            <>
-              <div className={`flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex`}>
-                <Link to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Post Blood Request
-                </Link>
-                <Link to="/RequestsNearMe" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Requests Near Me
-                </Link>
-                <Link to={`/bloodRequirement?query=UserBloodRequests`} onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Your Blood Requests
-                </Link>
-                <Link to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Your Camp Requests
-                </Link>
-                <Link to="/home" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Home
-                </Link>
-                <Link to="/about" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  About
-                </Link>
-                <Link to="/userprofile" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Profile
-                </Link>
-                <button onClick={handleLogout} className="text-gray-800 hover:text-red-600 md:px-2">
-                  Logout
-                </button>
-              </div>
-              <div className="flex items-center md:hidden p-4">
-                <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
-                <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
-              </div>
-            </>
-          ) : (
-            <div className="flex items-center">
-              <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
-              <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
-            </div>
-          )
-          ) : (
-            <>
-              <div className="hidden items-center sm:flex gap-6">
-                <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
-                  Home
-                </Nav.Link>
-                <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
-                  Emergency Blood Request
-                </Nav.Link>
-                <Nav.Link as={Link} to="/volunteervechile" onClick={() => setSidebarOpen(false)}>
-                  Volunteer Vehicle
-                </Nav.Link>
-                <Nav.Link as={Link} to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)}>
-                  Hospital / Organization
-                </Nav.Link>
-                <Nav.Link as={Link} to="/loginsignup" onClick={handleLogin}>
-                  Login
-                </Nav.Link>
-                <Nav.Link as={Link} to="/loginsignup" onClick={handleSignup}>
-                  Register As a Donor
-                </Nav.Link>
-              </div>
-              <div className="flex items-center md:hidden p-4">
-                <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
-                <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
-              </div>
-            </>
-          )}
-        </Container> */}
-
         <Container fluid style={{ paddingLeft: '0px', paddingRight: '0px' }} className='w-full flex justify-between'>
-          {token ? (isDashboard ? (
+          {token ? (isDashboard || isHome ? (
             <>
               {/* Desktop Navigation */}
               <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">
-                <Link to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  <img src={`url(${postBloodRequest})`} alt="" /> Post Blood Request
+                <Link
+                  to="/bloodRequirement"
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
+                  <img src={postBloodRequest} alt="" className="w-5 h-5" /> Post Blood Request
                 </Link>
-                <Link to="/RequestsNearMe" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  <img src={`url(${bloodNearMe})`} alt="" /> Requests Near Me
+                <Link
+                  to="/RequestsNearMe"
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
+                  <img src={bloodNearMe} alt="" className="w-5 h-5" /> Requests Near Me
                 </Link>
-                <Link to={`/bloodRequirement?query=UserBloodRequests`} onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  <img src={`url(${yourBloodRequest})`} alt="" /> Your Blood Requests
+                <Link
+                  to={`/bloodRequirement?query=UserBloodRequests`}
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
+                  <img src={yourBloodRequest} alt="" className="w-5 h-5" /> Your Blood Requests
                 </Link>
-                <Link to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  <img src={`url(${yourCampRequests})`} alt="" /> Your Camp Requests
+                <Link
+                  to={`/bloodRequirement?query=UserCampRequests`}
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
+                  <img src={yourCampRequests} alt="" className="w-5 h-5" /> Your Camp Requests
                 </Link>
-                <Link to="/home" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
-                  <img src={`url(${home})`} alt="" /> Home
+                <Link
+                  to="/home"
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
+                  <img src={home} alt="" className="w-5 h-5" /> Home
                 </Link>
-                <Link to="/about" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                <Link
+                  to="/about"
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
                   About
                 </Link>
-                <Link to="/userprofile" onClick={() => setSidebarOpen(false)} className="text-gray-800 hover:text-red-600 md:px-2">
+                <Link
+                  to="/userprofile"
+                  onClick={() => setSidebarOpen(false)}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
                   Profile
                 </Link>
-                <button onClick={handleLogout} className="text-gray-800 hover:text-red-600 md:px-2">
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                >
                   Logout
                 </button>
+
               </div>
 
               {/* Mobile Menu Icon */}
@@ -283,29 +243,29 @@ const Navbarjs = ({ setToken, setsignup }) => {
             </>
           ) : token ? (
             <>
-              <Nav.Link as={Link} to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center'>
+              <Nav.Link as={Link} to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
                 <img src={postBloodRequest} alt="Req" className='w-5 h-5' /><p>Post Blood Request</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/bloodRequirement?query=campRequest" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
+              <Nav.Link as={Link} to="/bloodRequirement?query=campRequest" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center  text-nowrap'>
                 <img src={postCampRequest} alt="Req" className='w-5 h-5' /><p>Post Camps Request</p>
               </Nav.Link>
-              <Nav.Link as={Link} to="/RequestsNearMe" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
+              <Nav.Link as={Link} to="/RequestsNearMe" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <img src={bloodNearMe} alt="Req" className='w-5 h-5' />Requests Near Me
               </Nav.Link>
-              <Nav.Link as={Link} to={`/bloodRequirement?query=UserBloodRequests`} onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
+              <Nav.Link as={Link} to={`/bloodRequirement?query=UserBloodRequests`} onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <img src={yourBloodRequest} alt="Req" className='w-5 h-5' /> Your Blood Requests
               </Nav.Link>
-              <Nav.Link as={Link} to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
+              <Nav.Link as={Link} to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <img src={yourCampRequests} alt="Req" className='w-5 h-5' /> Your Camp Requests
               </Nav.Link>
-              <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
+              <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <img src={home} alt="Req" className='w-5 h-5' />  Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/about" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
-              <FaFontAwesome icon={faCircleInfo} className='w-5 h-5'/>About
+              <Nav.Link as={Link} to="/about" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
+                <FaFontAwesome icon={faCircleInfo} className='w-5 h-5' />About
               </Nav.Link>
-              <Nav.Link as={Link} to="/userprofile" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center'>
-              <FontAwesomeIcon icon={faUser} className='w-5 h-5'/>  Profile
+              <Nav.Link as={Link} to="/userprofile" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
+                <FontAwesomeIcon icon={faUser} className='w-5 h-5' />  Profile
               </Nav.Link>
               <button className="logout-button" onClick={handleLogout}>
                 Logout
