@@ -164,11 +164,11 @@ const HospitalLoginSignup = () => {
       navigate('/hospitalHome');  // Redirect after successful login
       window.location.reload();
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Login failed Invalid Details:', error);
       toast.error(error.response.data.error)
       toast.error(error.response.data.message)
+      setLoggingIn(!loggingIn)
     }
-    setLoggingIn(!loggingIn)
   };
 
   // Handle signup logic
