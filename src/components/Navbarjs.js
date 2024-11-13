@@ -98,14 +98,14 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   onClick={() => setSidebarOpen(false)}
                   className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
                 >
-                  <img src={postBloodRequest} alt="" className="w-5 h-5" /> Post Blood Request
+                  <img src={postBloodRequest} alt="" className="w-5 h-5" /> Looking For Blood
                 </Link>
                 <Link
                   to="/RequestsNearMe"
                   onClick={() => setSidebarOpen(false)}
                   className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
                 >
-                  <img src={bloodNearMe} alt="" className="w-5 h-5" /> Requests Near Me
+                  <img src={bloodNearMe} alt="" className="w-5 h-5" /> Want To Donate Blood
                 </Link>
                 <Link
                   to={`/bloodRequirement?query=UserBloodRequests`}
@@ -181,7 +181,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   onClick={() => setSidebarOpen(false)}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Emergency Blood Request
+                  Looking For Blood
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
@@ -213,7 +213,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   onClick={handleSignup}
                   className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                 >
-                  Register As a Donor
+                  Want To Donate Blood
                 </Nav.Link>
               </div>
 

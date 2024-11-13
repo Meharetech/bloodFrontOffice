@@ -63,7 +63,7 @@ function App() {
     <div className="App">
       <TopHeader />
 
-      {!isLoginPage && <Navbarjs setsignup={setsignup} setToken={setToken} />
+      {<Navbarjs setsignup={setsignup} setToken={setToken} />
       }
       <div>
         {/* <ButtonComponent/>

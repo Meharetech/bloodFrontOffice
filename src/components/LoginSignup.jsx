@@ -119,6 +119,7 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
 
     }
     setLoading(false);
+    window.location.reload();
   };
 
   const handleSignup = async () => {
