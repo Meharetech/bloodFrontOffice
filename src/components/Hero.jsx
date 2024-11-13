@@ -17,7 +17,7 @@ const Hero = () => {
     <div className="hero-container" data-aos="fade-left">
       {/* <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 items-center justify-between p-10 sm:p-24">
        */}
-      <div className='block sm:flex justify-evenly'
+      <div className='flex flex-col items-center sm:flex-row justify-evenly'
       // 'items-center justify-between p-10 sm:p-24'      
       >
         {/* <div className="ml-2 mr-2 mt-2"> */}
@@ -28,10 +28,10 @@ const Hero = () => {
             Volunteer Vehicle
           </Nav.Link>
         </div> */}
-        <div className=" sm:w-2/5 mt-10">
+        <div className="w-4/5 sm:w-2/5 mt-10">
           <img src={whydonate} alt="whyDonateImage" className='w-full h-full' />
         </div>
-        <div className=" sm:w-2/5 mt-10">
+        <div className="w-4/5 sm:w-2/5 mt-10">
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header>

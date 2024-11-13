@@ -166,26 +166,57 @@ const Navbarjs = ({ setToken, setsignup }) => {
           ) : (
             <>
               {/* Guest Navigation */}
-              <div className="hidden items-center sm:flex gap-6">
-                <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
+              <div className="hidden items-center sm:flex gap-4">
+                <Nav.Link
+                  as={Link}
+                  to="/home"
+                  onClick={() => setSidebarOpen(false)}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                >
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
+                <Nav.Link
+                  as={Link}
+                  to="/EmergencyBloodRequest"
+                  onClick={() => setSidebarOpen(false)}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                >
                   Emergency Blood Request
                 </Nav.Link>
-                <Nav.Link as={Link} to="/volunteervechile" onClick={() => setSidebarOpen(false)}>
+                <Nav.Link
+                  as={Link}
+                  to="/volunteervechile"
+                  onClick={() => setSidebarOpen(false)}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                >
                   Volunteer Vehicle
                 </Nav.Link>
-                <Nav.Link as={Link} to="/hospitalLoginSignup" onClick={() => setSidebarOpen(false)}>
+                <Nav.Link
+                  as={Link}
+                  to="/hospitalLoginSignup"
+                  onClick={() => setSidebarOpen(false)}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                >
                   Hospital / Organization
                 </Nav.Link>
-                <Nav.Link as={Link} to="/loginsignup" onClick={handleLogin}>
+                <Nav.Link
+                  as={Link}
+                  to="/loginsignup"
+                  onClick={handleLogin}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                >
                   Login
                 </Nav.Link>
-                <Nav.Link as={Link} to="/loginsignup" onClick={handleSignup}>
+                <Nav.Link
+                  as={Link}
+                  to="/loginsignup"
+                  onClick={handleSignup}
+                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                >
                   Register As a Donor
                 </Nav.Link>
               </div>
+
 
               {/* Mobile Menu Icon */}
               <div className="flex items-center md:hidden p-4">
@@ -258,7 +289,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to={`/bloodRequirement?query=UserCampRequests`} onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <img src={yourCampRequests} alt="Req" className='w-5 h-5' /> Your Camp Requests
               </Nav.Link>
-              <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
+              <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <img src={home} alt="Req" className='w-5 h-5' />  Home
               </Nav.Link>
               <Nav.Link as={Link} to="/about" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
@@ -273,7 +304,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
             </>
           ) : (
             <>
-              <Nav.Link as={Link} to="/" onClick={() => setSidebarOpen(false)}>
+              <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)}>
                 Home
               </Nav.Link>
               <Nav.Link as={Link} to="/EmergencyBloodRequest" onClick={() => setSidebarOpen(false)}>
