@@ -89,7 +89,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
         className=" bg-body-tertiary position-sticky top-0 border z-20"
       >
         <Container fluid style={{ paddingLeft: '0px', paddingRight: '0px' }} className='w-full flex justify-between'>
-          {token || htoken ? (isDashboard || isHome ? (
+          {token || htoken || atoken ? (isDashboard || isHome ? (
             <>
               {/* Desktop Navigation */}
               <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">
