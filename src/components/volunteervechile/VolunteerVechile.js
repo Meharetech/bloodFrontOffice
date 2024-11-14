@@ -250,7 +250,7 @@ const VolunteerVehicle = () => {
         {/* Expiration Days */}
         <div className='mb-4'>
           <label className='block text-gray-700 mb-2' htmlFor='availableDays'>
-            Number of Days Until Expiration
+            Number of Days Available
           </label>
           <input
             type='number'

@@ -43,6 +43,7 @@ import HospitalNgoMembers from './components/Hospitalpages/HospitalNgoMembers';
 import Events from './components/Hospitalpages/Events';
 import HProfile from './components/Hospitalpages/Profile';
 import HHome from './components/Hospitalpages/Home';
+import ManageVehicles from './components/Admin/ManageVehicles';
 function App() {
 
   const [token, setToken] = useState('');
@@ -148,6 +149,8 @@ function App() {
 
 
             <Route path='/manageUsers' element={<AdminManageUsers />
+            } />
+            <Route path='/manageVehicles' element={<ManageVehicles />
             } />
 
             <Route path='/HospitalDonorsResponses' element={<HospitalDonorsResponsesDetails />
