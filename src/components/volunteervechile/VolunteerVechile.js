@@ -100,7 +100,7 @@ const VolunteerVehicle = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Error: Could not reach the server');
+      toast.error('Licence Plate Already Registered .');
     }
   };
 
