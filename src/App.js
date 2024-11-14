@@ -44,6 +44,7 @@ import Events from './components/Hospitalpages/Events';
 import HProfile from './components/Hospitalpages/Profile';
 import HHome from './components/Hospitalpages/Home';
 import ManageVehicles from './components/Admin/ManageVehicles';
+import AllDonations from './components/Admin/AllDonations';
 function App() {
 
   const [token, setToken] = useState('');
@@ -93,6 +94,8 @@ function App() {
             <Route path="/admin" element={adminToken ? <AdminPanel setAdminToken={setAdminToken} />
               : <Navigate to="/adminLogin" />
             } />
+
+            <Route path="/allDonations" element={<AllDonations/>} />
 
             <Route path="/adminLogin" element={adminToken ? <Navigate to="/admin" />
               : <AdminLogSign setAdminToken={setAdminToken} />

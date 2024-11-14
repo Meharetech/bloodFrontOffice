@@ -176,6 +176,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)}>
                     Home
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/allDonations" onClick={() => setSidebarOpen(false)}>
+                    All Donations
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/eventsadmin" onClick={() => setSidebarOpen(false)}>
                     Events
                   </Nav.Link>
@@ -200,7 +203,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
                   <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
                 </div>
-              </> 
+              </>
             ) : htoken ? (
               <>
                 <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">                <Nav.Link as={Link} to="/HospitalHome" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
@@ -332,6 +335,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
             <>
               <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)}>
                 Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/allDonations" onClick={() => setSidebarOpen(false)}>
+                All Donations
               </Nav.Link>
               <Nav.Link as={Link} to="/eventsadmin" onClick={() => setSidebarOpen(false)}>
                 Events
