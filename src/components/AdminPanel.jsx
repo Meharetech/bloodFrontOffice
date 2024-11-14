@@ -139,7 +139,7 @@ function AdminPanel({ setAdminToken }) {
       </div>
 
       {/* Toggle Buttons */}
-      <div className="flex items-center justify-center  gap-4 p-4">
+      <div className="flex flex-col sm:flex-row items-center justify-center  gap-4 p-4">
         <button
           onClick={() => setShowPendingUsers(!showPendingUsers)}
           className={`btn-toggle flex items-center border-2 p-3 rounded-full text-white transition-colors ${showPendingUsers ? 'bg-green-600' : 'bg-red-500'

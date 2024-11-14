@@ -93,142 +93,203 @@ const Navbarjs = ({ setToken, setsignup }) => {
         className=" bg-body-tertiary position-sticky top-0 border z-20"
       >
         <Container fluid style={{ paddingLeft: '0px', paddingRight: '0px' }} className='w-full flex justify-between'>
-          {token || htoken || atoken ? (isDashboard || isHome ? (
-            <>
-              {/* Desktop Navigation */}
-              <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">
-                <Link
-                  to="/bloodRequirement"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  <img src={postBloodRequest} alt="" className="w-5 h-5" /> Looking For Blood
-                </Link>
-                <Link
-                  to="/RequestsNearMe"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  <img src={bloodNearMe} alt="" className="w-5 h-5" /> Want To Donate Blood
-                </Link>
-                <Link
-                  to={`/bloodRequirement?query=UserBloodRequests`}
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  <img src={yourBloodRequest} alt="" className="w-5 h-5" /> Your Blood Requests
-                </Link>
-                <Link
-                  to={`/bloodRequirement?query=UserCampRequests`}
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  <img src={yourCampRequests} alt="" className="w-5 h-5" /> Your Camp Requests
-                </Link>
-                <Link
-                  to="/home"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  <img src={home} alt="" className="w-5 h-5" /> Home
-                </Link>
-                <Link
-                  to="/about"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  About
-                </Link>
-                <Link
-                  to="/userprofile"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  Profile
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
-                >
-                  Logout
-                </button>
+          {token
+            // || htoken
+            // || atoken
+            ? (isDashboard || isHome ? (
+              <>
+                {/* Desktop Navigation */}
+                <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">
+                  <Link
+                    to="/bloodRequirement"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <img src={postBloodRequest} alt="" className="w-5 h-5" /> Looking For Blood
+                  </Link>
+                  <Link
+                    to="/RequestsNearMe"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <img src={bloodNearMe} alt="" className="w-5 h-5" /> Want To Donate Blood
+                  </Link>
+                  <Link
+                    to={`/bloodRequirement?query=UserBloodRequests`}
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <img src={yourBloodRequest} alt="" className="w-5 h-5" /> Your Blood Requests
+                  </Link>
+                  <Link
+                    to={`/bloodRequirement?query=UserCampRequests`}
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <img src={yourCampRequests} alt="" className="w-5 h-5" /> Your Camp Requests
+                  </Link>
+                  <Link
+                    to="/home"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <img src={home} alt="" className="w-5 h-5" />Home
+                  </Link>
+                  <Link
+                    to="/about"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    to="/userprofile"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    Profile
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    Logout
+                  </button>
 
-              </div>
+                </div>
 
-              {/* Mobile Menu Icon */}
-              <div className="flex items-center md:hidden p-4 ml-10">
+                {/* Mobile Menu Icon */}
+                <div className="flex items-center md:hidden p-4 ml-10">
+                  <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+                  <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center ml-10">
                 <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
                 <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
               </div>
-            </>
-          ) : (
-            <div className="flex items-center ml-10">
-              <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
-              <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
-            </div>
-          )
-          ) : (
-            <>
-              {/* Guest Navigation */}
-              <div className="hidden items-center sm:flex gap-4">
-                <Nav.Link
-                  as={Link}
-                  to="/home"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
-                >
-                  <FontAwesomeIcon icon={faHome} />Home
+            )
+            ) : atoken ? (
+              <>
+                <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">
+                  <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)}>
+                    Home
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/eventsadmin" onClick={() => setSidebarOpen(false)}>
+                    Events
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/admin" onClick={() => setSidebarOpen(false)}>
+                    Admin Home
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/manageUsers" onClick={() => setSidebarOpen(false)}>
+                    Manage-Users
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/manageVehicles" onClick={() => setSidebarOpen(false)}>
+                    Manage-Vehicles
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/adminimageupload" onClick={() => setSidebarOpen(false)}>
+                    Images
+                  </Nav.Link>
+                  <button className="" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+                {/* Mobile Menu Icon */}
+                <div className="flex items-center md:hidden p-4 ml-10">
+                  <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+                  <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+                </div>
+              </> 
+            ) : htoken ? (
+              <>
+                <div className="flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 bg-gray-100 md:bg-transparent hidden sm:flex">                <Nav.Link as={Link} to="/HospitalHome" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
+                  <FontAwesomeIcon icon={faHome} /> <p>Home</p>
                 </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to="/EmergencyBloodRequest"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
-                >
-                  <img src={postBloodRequest} alt="" className="w-5 h-5" /> Emergency Blood
-                </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to="/volunteervechile"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
-                >
-                  <FontAwesomeIcon icon={faCar} />Volunteer Vehicle
-                </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to="/hospitalLoginSignup"
-                  onClick={() => setSidebarOpen(false)}
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
-                >
-                  <FontAwesomeIcon icon={faHospital} />Hospital / Organization
-                </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to="/loginsignup"
-                  onClick={handleLogin}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
-                >
-                  <FontAwesomeIcon icon={faUser} /> Login
-                </Nav.Link>
-                <Nav.Link
-                  as={Link}
-                  to="/loginsignup"
-                  onClick={handleSignup}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
-                >
-                  Want To Donate Blood
-                </Nav.Link>
-              </div>
+                  <Nav.Link as={Link} to="/HospitalPostRequest" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
+                    <img src={postBloodRequest} alt="" className="w-5 h-5" /><p>Post Blood Request</p>
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/HEvents" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
+                    <FontAwesomeIcon icon={faHome} />Events
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/hospitalProfile" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
+                    <FontAwesomeIcon icon={faUser} className='w-5 h-5' />  Profile
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/RegisteredMembers" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
+                    <FontAwesomeIcon icon={faUserGear} className='w-5 h-5' /><p>Members</p>
+                  </Nav.Link>
+                  <button className="" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+                {/* Mobile Menu Icon */}
+                <div className="flex items-center md:hidden p-4 ml-10">
+                  <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+                  <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+                </div>
+              </>
+            ) : (
+              <>
+                {/* Guest Navigation */}
+                <div className="hidden items-center sm:flex gap-4">
+                  <Nav.Link
+                    as={Link}
+                    to="/home"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  >
+                    <FontAwesomeIcon icon={faHome} />Home
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/EmergencyBloodRequest"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  >
+                    <img src={postBloodRequest} alt="" className="w-5 h-5" /> Emergency Blood
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/volunteervechile"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  >
+                    <FontAwesomeIcon icon={faCar} />Volunteer Vehicle
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/hospitalLoginSignup"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  >
+                    <FontAwesomeIcon icon={faHospital} />Hospital / Organization
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/loginsignup"
+                    onClick={handleLogin}
+                    className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  >
+                    <FontAwesomeIcon icon={faUser} /> Login
+                  </Nav.Link>
+                  <Nav.Link
+                    as={Link}
+                    to="/loginsignup"
+                    onClick={handleSignup}
+                    className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
+                  >
+                    Want To Donate Blood
+                  </Nav.Link>
+                </div>
 
 
-              {/* Mobile Menu Icon */}
-              <div className="flex items-center md:hidden p-4">
-                <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
-                <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
-              </div>
-            </>
-          )}
+                {/* Mobile Menu Icon */}
+                <div className="flex items-center md:hidden p-4">
+                  <FontAwesomeIcon icon={faBars} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'hidden' : 'block'}`} onClick={() => setSidebarOpen(true)} />
+                  <FontAwesomeIcon icon={faTimes} className={`hamburger-icon text-gray-800 ${sidebarOpen ? 'block' : 'hidden'}`} onClick={() => setSidebarOpen(false)} />
+                </div>
+              </>
+            )}
 
           {/* Navbar Brand Logo */}
           <Navbar as={Link} to="/" className=" flex mr-4">
@@ -242,7 +303,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
       {/* Sidebar */}
       <div
         ref={sidebarRef}
-        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[173px] sm:mt-[118px]'} ${isDashboard ? ' mt-[103px]' : 'mt-[173px]'} overflow-y-auto sidebar-responsive-height`}
+        className={`sidebar relative ${sidebarOpen ? 'open sm:mt-[118px]' : 'mt-[103px] sm:mt-[118px]'} ${isDashboard ? ' mt-[103px]' : 'mt-[106px]'} overflow-y-auto sidebar-responsive-height`}
       // style={{ maxHeight: 'md:calc(100vh - 118px) calc(100vh-148px)' }}
       >
         <Nav className="sidebar-nav">
@@ -281,6 +342,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to="/manageUsers" onClick={() => setSidebarOpen(false)}>
                 Manage-Users
               </Nav.Link>
+              <Nav.Link as={Link} to="/manageVehicles" onClick={() => setSidebarOpen(false)}>
+                Manage-Vehicles
+              </Nav.Link>
               <Nav.Link as={Link} to="/adminimageupload" onClick={() => setSidebarOpen(false)}>
                 Images
               </Nav.Link>
@@ -306,7 +370,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                 <img src={yourCampRequests} alt="Req" className='w-5 h-5' /> Your Camp Requests
               </Nav.Link>
               <Nav.Link as={Link} to="/home" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
-                <img src={home} alt="Req" className='w-5 h-5' />  Home
+                <img src={home} alt="Req" className='w-5 h-5' />Home
               </Nav.Link>
               <Nav.Link as={Link} to="/about" onClick={() => setSidebarOpen(false)} className='flex  text-nowrap gap-3 items-center'>
                 <FaFontAwesome icon={faCircleInfo} className='w-5 h-5' />About
