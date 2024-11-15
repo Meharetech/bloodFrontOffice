@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 
 const DonorResponseAdmin = () => {
     const [responses, setResponses] = useState([]);
-    const [error, setError] = useState(''); 
-     const [requestNumber, setrequestNumber] = useState('');
+    const [error, setError] = useState('');
+    const [requestNumber, setrequestNumber] = useState('');
     const navigate = useNavigate;
 
     const location = useLocation(); // Get the location object from react-router-dom
@@ -47,31 +47,32 @@ const DonorResponseAdmin = () => {
     const handeldelte = async () => {
         const token = localStorage.getItem('adminToken');
         try {
-          const response = await axios.delete(`${BaseUrl}/deleteBloodRequestAdmin`,
-            {
-              params: {id: requestNumber },
-              headers: { Authorization: token }
-            }
-          )
-          console.log(response.data);
-          toast.success(response.data.message);
-          window.location.href="/admin";
+            const response = await axios.delete(`${BaseUrl}/deleteBloodRequestAdmin`,
+                {
+                    params: { id: requestNumber },
+                    headers: { Authorization: token }
+                }
+            )
+            console.log(response.data);
+            toast.success(response.data.message);
+            window.location.href = "/admin";
         } catch (error) {
-          console.log(error)
+            console.log(error)
         }
-        
-      }
-    
+
+    }
+
 
     return (
         <div>
+            <h1>{requestNumber}</h1>
             <button onClick={handeldelte} className='bg-violet-500 text-white py-1 px-3 rounded-2xl' >Delete Request</button>
             <div className='flex mt-7 items-center justify-center'>
                 <Link to='/admin' className="text-lg block mb-4 px-3 py-1 rounded-2xl no-underline hover:underline hover:bg-green-700 bg-green-500 text-white"> Admin Home</Link>
             </div>
-            <hr className='mt-10'/>
+            <hr className='mt-10' />
             <h2>Donor Responses Admin</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
             {responses.length > 0 ? (
                 <ul className='donor-responses'>
                     {responses.map((response, index) => (
@@ -84,7 +85,7 @@ const DonorResponseAdmin = () => {
                     ))}
                 </ul>
             ) : (
-                <p>No responses available</p>
+                <h1 className='text-3xl font-semibold mb-36'>No Donor response available</h1>
             )}
         </div>
     );

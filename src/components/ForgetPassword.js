@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Importing Toastify CSS
 import { BaseUrl } from './Util/util';
+import { useNavigate } from 'react-router-dom';
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +11,8 @@ const ForgetPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [emailSent, setEmailSent] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   // Handle email submission to send OTP
   const handleSubmit = async (e) => {
@@ -33,11 +36,13 @@ const ForgetPassword = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(`${BaseUrl}/verifyOtp`, { email, otp, newPassword });
+      const response = await axios.post(`${BaseUrl}/verifyOtpResetPassword`, { email, otp, newPassword });
       console.log(response);
       toast.success(response.data.message);
+      window.alert(response.data.message)
+      navigate('/loginsignup');
     } catch (error) {
-      toast.error('Error: Network issue or invalid request.');
+      toast.error('Invalid Otp .');
     } finally {
       setLoading(false);
     }
@@ -53,17 +58,17 @@ const ForgetPassword = () => {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-                Email Address:
+                Phone Number
               </label>
               <input
-                type="email"
+                type="phone"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={emailSent} // Disable if OTP is sent
                 required
                 className={`w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 ${emailSent ? 'bg-gray-100' : ''}`}
-                placeholder="Enter your email"
+                placeholder="Enter your Phone Number"
               />
             </div>
 

@@ -204,10 +204,10 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
     try {
       const response = await axios.post(`${BaseUrl}/resendOtp`, { email });
       console.log(response.data);
-      toast.success("OTP Resent Successfully");
+      toast.success("OTP Resent Successfully On WhatsApp !");
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data?.error || 'Failed to resend OTP');
+      toast.error('Failed to resend OTP !');
     }
   };
 
