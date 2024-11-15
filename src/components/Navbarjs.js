@@ -7,7 +7,7 @@ import logo from './images/bloodlogo.png';
 import { Navbar } from 'react-bootstrap';
 import { FaEvernote, FaFontAwesome, FaHSquare } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCar, faCircleInfo, faDroplet, faHome, faHospital, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBank, faBars, faCar, faCircleInfo, faDroplet, faHome, faHospital, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
 import bloodNearMe from '../images/bloodnearme.png'
 import home from '../images/home.png'
 import postBloodRequest from '../images/postbloodreqmain.png'
@@ -108,6 +108,13 @@ const Navbarjs = ({ setToken, setsignup }) => {
                     <img src={postBloodRequest} alt="" className="w-5 h-5" /> Looking For Blood
                   </Link>
                   <Link
+                    to="/allBloodBankData"
+                    onClick={() => setSidebarOpen(false)}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <FontAwesomeIcon icon={faBank}/>  Blood Bank
+                  </Link>
+                  <Link
                     to="/RequestsNearMe"
                     onClick={() => setSidebarOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
@@ -179,6 +186,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   <Nav.Link as={Link} to="/allDonations" onClick={() => setSidebarOpen(false)}>
                     All Donations
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/allBloodBankData" onClick={() => setSidebarOpen(false)}>
+                    Blood Bank Data
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/eventsadmin" onClick={() => setSidebarOpen(false)}>
                     Events
                   </Nav.Link>
@@ -217,6 +227,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   </Nav.Link>
                   <Nav.Link as={Link} to="/hospitalProfile" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
                     <FontAwesomeIcon icon={faUser} className='w-5 h-5' />  Profile
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/hospitalBloodBank" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
+                    <img src={postBloodRequest} alt="" className="w-5 h-5" /><p>Blood Bank</p>
                   </Nav.Link>
                   <Nav.Link as={Link} to="/RegisteredMembers" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
                     <FontAwesomeIcon icon={faUserGear} className='w-5 h-5' /><p>Members</p>
@@ -315,6 +328,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to="/HospitalHome" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
                 <FontAwesomeIcon icon={faHome} /> <p>Home</p>
               </Nav.Link>
+              <Nav.Link as={Link} to="/hospitalBloodBank" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <FontAwesomeIcon icon={faBank} /> <p>Blood Bank</p>
+              </Nav.Link>
               <Nav.Link as={Link} to="/HospitalPostRequest" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
                 <img src={postBloodRequest} alt="" className="w-5 h-5" /><p>Post Blood Request</p>
               </Nav.Link>
@@ -339,6 +355,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
               <Nav.Link as={Link} to="/allDonations" onClick={() => setSidebarOpen(false)}>
                 All Donations
               </Nav.Link>
+              <Nav.Link as={Link} to="/allBloodBankData" onClick={() => setSidebarOpen(false)}>
+                Blood Bank Data
+              </Nav.Link>
               <Nav.Link as={Link} to="/eventsadmin" onClick={() => setSidebarOpen(false)}>
                 Events
               </Nav.Link>
@@ -362,6 +381,9 @@ const Navbarjs = ({ setToken, setsignup }) => {
             <>
               <Nav.Link as={Link} to="/bloodRequirement" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
                 <img src={postBloodRequest} alt="Req" className='w-5 h-5' /><p>Post Blood Request</p>
+              </Nav.Link>
+              <Nav.Link as={Link} to="/allBloodBankData" onClick={() => setSidebarOpen(false)} className='flex gap-3 items-center  text-nowrap'>
+                <img src={postBloodRequest} alt="Req" className='w-5 h-5' /><p>Blood Bank</p>
               </Nav.Link>
               <Nav.Link as={Link} to="/bloodRequirement?query=campRequest" onClick={() => setSidebarOpen(false)} className='flex  gap-3 items-center  text-nowrap'>
                 <img src={postCampRequest} alt="Req" className='w-5 h-5' /><p>Post Camps Request</p>

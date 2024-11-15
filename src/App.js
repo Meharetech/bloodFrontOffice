@@ -45,6 +45,8 @@ import HProfile from './components/Hospitalpages/Profile';
 import HHome from './components/Hospitalpages/Home';
 import ManageVehicles from './components/Admin/ManageVehicles';
 import AllDonations from './components/Admin/AllDonations';
+import BloodBankDetails from './components/Hospitalpages/BloodBankDetails';
+import AllHospitalBloodBankData from './components/User/AllHospitalBloodBankData';
 function App() {
 
   const [token, setToken] = useState('');
@@ -107,6 +109,8 @@ function App() {
 
             <Route path="/RequestsNearMe" element={<AllRequests />
             } />
+            <Route path="/allBloodBankData" element={<AllHospitalBloodBankData />
+            } />
 
             <Route path="/bloodRequirement" element={<BloodRequirement setToken={setToken} />
             } />
@@ -142,6 +146,8 @@ function App() {
             <Route path='/HospitalHome' element={<HHome />
             } />
             <Route path='/hospitalProfile' element={<HProfile />
+            } />
+            <Route path='/hospitalBloodBank' element={<BloodBankDetails />
             } />
             <Route path='/HospitalPostRequest' element={<PostBloodRequest />
             } />
