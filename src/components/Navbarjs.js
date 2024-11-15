@@ -247,7 +247,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
             ) : (
               <>
                 {/* Guest Navigation */}
-                <div className="hidden items-center sm:flex gap-4">
+                <div className="ml-4 hidden items-center sm:flex gap-4">
                   <Nav.Link
                     as={Link}
                     to="/home"
