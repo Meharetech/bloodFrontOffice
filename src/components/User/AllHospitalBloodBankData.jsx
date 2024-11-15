@@ -56,9 +56,9 @@ const AllHospitalBloodBankData = () => {
                         <p className="text-gray-600">
                             <strong>Address:</strong> {bank.address}
                         </p>
-                        <p className="text-gray-600">
+                        {/* <p className="text-gray-600">
                             <strong>Hospital Name:</strong> {bank.hospitalId.name}
-                        </p>
+                        </p> */}
                         <p className="text-gray-600">
                             <strong>Contact:</strong> {bank.hospitalId.contact.phone} /{' '}
                             {bank.hospitalId.contact.email}
