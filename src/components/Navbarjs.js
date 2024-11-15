@@ -204,7 +204,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   <Nav.Link as={Link} to="/adminimageupload" onClick={() => setSidebarOpen(false)}>
                     Images
                   </Nav.Link>
-                  <button className="" onClick={handleLogout}>
+                  <button className="logout-button" onClick={handleLogout}>
                     Logout
                   </button>
                 </div>
@@ -234,7 +234,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                   <Nav.Link as={Link} to="/RegisteredMembers" onClick={() => setSidebarOpen(false)} className='flex gap-2 items-center  text-nowrap'>
                     <FontAwesomeIcon icon={faUserGear} className='w-5 h-5' /><p>Members</p>
                   </Nav.Link>
-                  <button className="" onClick={handleLogout}>
+                  <button className="logout-button" onClick={handleLogout}>
                     Logout
                   </button>
                 </div>
@@ -488,7 +488,6 @@ const Navbarjs = ({ setToken, setsignup }) => {
       max-height: calc(100vh - 118px);
     }
     .logout-button {
-      position:absolute;
       bottom:0px;
       left:96px;
     }

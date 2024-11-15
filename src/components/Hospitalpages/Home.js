@@ -30,7 +30,7 @@ const HHome = () => {
     }, []);
 
     if (loading) return <p className="text-center py-4">Loading...</p>;
-    if (error) return <p className="text-center py-4 text-red-500">Error: {error}</p>;
+    // if (error) return <p className="text-center py-4 text-red-500">Error: No Active Requests</p>;
 
     return (
         <div className="container mx-auto px-4 py-6">

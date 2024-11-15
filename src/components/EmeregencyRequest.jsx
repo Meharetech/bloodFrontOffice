@@ -62,7 +62,7 @@ const EmergencyRequest = () => {
 
     // Function to submit blood request
     const bloodRequest = async () => {
-        if (!bloodGroup || !location.latitude || !location.longitude || !name || !phoneNumber) {
+        if (!bloodGroup || !name || !phoneNumber) {
             alert("All fields are required for submitting a blood request.");
             return;
         }
@@ -255,7 +255,7 @@ const EmergencyRequest = () => {
                                     key={index}
                                     className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
                                 >
-                                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6"> 
+                                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6">
                                         <div className="flex flex-col mb-4 sm:mb-0">
                                             <strong className="text-2xl font-semibold text-blue-600">{request.bloodGroup}</strong>
                                             <span className="text-gray-700 text-lg">{request.name}</span>
