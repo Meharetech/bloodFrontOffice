@@ -140,7 +140,7 @@ const ManageVehicles = () => {
             )}
 
             {/* Vehicle List */}
-            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
+            {/* <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
                 {filteredVehicles.length > 0 ? (
                     filteredVehicles.map(vehicle => (
                         // <div
@@ -176,7 +176,6 @@ const ManageVehicles = () => {
                             key={vehicle._id}
                             className="bg-white rounded-lg shadow-md p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-200"
                         >
-                            {/* Owner Name */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 overflow-hidden font-semibold text-gray-800 mb-2 block">Owner Name:</label>
                                 <input
@@ -187,7 +186,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Vehicle Type */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className=" w-2/6 font-semibold text-gray-800 mb-2 block">Vehicle Type:</label>
                                 <input
@@ -198,7 +196,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* License Plate */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">License Plate:</label>
                                 <input
@@ -209,7 +206,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Pincode */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Pincode:</label>
                                 <input
@@ -220,7 +216,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Capacity */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Capacity:</label>
                                 <input
@@ -231,7 +226,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Contact Number */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Contact Number:</label>
                                 <input
@@ -242,7 +236,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Availability */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Availability:</label>
                                 <input
@@ -253,7 +246,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Date of Availability */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Date of Availability:</label>
                                 <input
@@ -264,7 +256,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Available Days */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Available Days:</label>
                                 <input
@@ -275,7 +266,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Expiration Date */}
                             <div className="mb-4 flex justify-between text-nowrap">
                                 <label className="w-2/6 font-semibold text-gray-800 mb-2 block">Expiration Date:</label>
                                 <input
@@ -286,7 +276,6 @@ const ManageVehicles = () => {
                                 />
                             </div>
 
-                            {/* Action Buttons */}
                             <div className="flex space-x-4 mt-4">
                                 <button
                                     onClick={() => handleEdit(vehicle)}
@@ -307,7 +296,71 @@ const ManageVehicles = () => {
                 ) : (
                     <p className="col-span-full text-center text-gray-500">No vehicles found for this search term.</p>
                 )}
+            </div> */}
+            <div className="overflow-auto">
+                {filteredVehicles.length > 0 ? (
+                    <table className="min-w-full bg-white border border-gray-200">
+                        <thead>
+                            <tr>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">No.</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Owner Name</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Vehicle Type</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">License Plate</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Pincode</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Capacity</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Contact Number</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Availability</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Date of Availability</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Available Days</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Expiration Date</th>
+                                <th className="py-2 px-4 border-b font-semibold text-gray-800">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredVehicles.map((vehicle, index) => (
+                                <tr key={vehicle._id} className="hover:bg-gray-100">
+                                    <td className="py-2 px-4 border-b text-gray-600 text-center">{index + 1}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.ownerName}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.vehicleType}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.licensePlate}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.pincode}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.capacity}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.contactNumber}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">
+                                        {vehicle.availability ? 'Available' : 'Not Available'}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-gray-600">
+                                        {new Date(vehicle.dateOfAvailability).toLocaleDateString()}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-gray-600">{vehicle.availableDays}</td>
+                                    <td className="py-2 px-4 border-b text-gray-600">
+                                        {new Date(vehicle.expirationDate).toLocaleDateString()}
+                                    </td>
+                                    <td className="py-2 px-4 border-b text-gray-600">
+                                        <div className="flex space-x-2">
+                                            <button
+                                                onClick={() => handleEdit(vehicle)}
+                                                className="bg-yellow-500 text-white py-1 px-3 rounded-md hover:bg-yellow-600"
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(vehicle._id)}
+                                                className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p className="text-center text-gray-500">No vehicles found for this search term.</p>
+                )}
             </div>
+
         </div>
     );
 };

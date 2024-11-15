@@ -97,11 +97,11 @@ const UploadBanner = () => {
 
   const deleteBanner = async (id) => {
     try {
-      const response = await axios.delete(`${BaseUrl}/deleteBanner`, 
+      const response = await axios.delete(`${BaseUrl}/deleteBanner`,
         {
-        params: { bannerId:id },
-        headers: { authorization: token },
-      });
+          params: { bannerId: id },
+          headers: { authorization: token },
+        });
       toast.success('Banner deleted successfully');
 
       setBanner((prevBanners) => prevBanners.filter((banner) => banner._id !== id));
@@ -112,8 +112,8 @@ const UploadBanner = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-red-50 p-5">
-      <div className="bg-white border border-red-300 rounded-lg p-8 shadow-lg w-full max-w-md">
+    <div className="min-h-screen flex flex-col sm:flex-row items-center justify-evenly bg-red-50 p-5">
+      <div className="bg-white sm:w-2/5 h-[550px] border border-red-300 rounded-lg p-8 shadow-lg max-w-md">
         <h2 className="text-2xl font-bold text-red-600 mb-5">Upload Banner</h2>
 
         <form onSubmit={handleSubmit}>
@@ -149,9 +149,8 @@ const UploadBanner = () => {
 
           <button
             type="submit"
-            className={`mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
+            className={`mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 ${loading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             disabled={loading}
           >
             {loading ? (uploadingImage ? 'Uploading Image...' : 'Creating Banner...') : 'Create Banner'}
@@ -160,25 +159,27 @@ const UploadBanner = () => {
       </div>
 
       {/* Show banner section */}
-      <div className="mt-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-red-600 mb-5">Banners</h2>
+      <div className="mt-8 w-4/5 h-[550px] border-2 overflow-y-scroll max-w-md">
         {banner.length > 0 ? (
-          banner.map((bannerItem) => (
-            <div key={bannerItem._id} className="mb-5 bg-white p-4 rounded-lg shadow">
-              <h3 className="text-lg font-bold mb-2">{bannerItem.title}</h3>
-              <img src={bannerItem.image} alt={bannerItem.description} className="mb-2" />
-              <button
-                onClick={() => deleteBanner(bannerItem._id)}
-                className="mt-2 bg-red-600 text-white px-3 py-1 rounded-xl"
-              >
-                Delete Banner
-              </button>
-            </div>
-          ))
+          <div className="grid sm:grid-cols-2 gap-4">
+            {banner.map((bannerItem) => (
+              <div key={bannerItem._id} className="mb-5 bg-white p-4 rounded-lg shadow">
+                <h3 className="text-lg font-bold mb-2">{bannerItem.title}</h3>
+                <img src={bannerItem.image} alt={bannerItem.description} className="mb-2" />
+                <button
+                  onClick={() => deleteBanner(bannerItem._id)}
+                  className="mt-2 bg-red-600 text-white px-3 py-1 rounded-xl"
+                >
+                  Delete Banner
+                </button>
+              </div>
+            ))}
+          </div>
         ) : (
           <p>Loading banners...</p>
         )}
       </div>
+
 
       <ToastContainer
         position="top-right"

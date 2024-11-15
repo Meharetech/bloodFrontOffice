@@ -140,47 +140,47 @@ function AdminPanel({ setAdminToken }) {
 
       {/* Toggle Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center  gap-4 p-4">
-        <button
+        {/* <button
           onClick={() => setShowPendingUsers(!showPendingUsers)}
           className={`btn-toggle flex items-center border-2 p-3 rounded-full text-white transition-colors ${showPendingUsers ? 'bg-green-600' : 'bg-red-500'
             }`}
         >
           <FaUsers className="mr-2" />
           Pending Users
-        </button>
+        </button> */}
 
-        <button
+        {/* <button
           onClick={() => setShowUnverifiedUsers(!showUnverifiedUsers)}
           className={`btn-toggle flex items-center border-2 p-3 rounded-full text-white transition-colors ${showUnverifiedUsers ? 'bg-green-600' : 'bg-red-500'
             }`}
         >
           <FaUsers className="mr-2" /> Unverified Users
-        </button>
+        </button> */}
 
         <button
-          onClick={() => setShowRegisteredUsers(!showRegisteredUsers)}
+          onClick={() => { setShowRegisteredUsers(!showRegisteredUsers); setShowRegisteredHospital(false) }}
           className={`btn-toggle flex items-center border-2 p-3 rounded-full text-white transition-colors ${showRegisteredUsers ? 'bg-green-600' : 'bg-red-500'
             }`}
         >
           <FaUsers className="mr-2" /> Registered Users
         </button>
 
-        <button
+        {/* <button
           onClick={() => setShowPendingHospital(!showPendingHospital)}
           className={`btn-toggle flex items-center border-2 p-3 rounded-full text-white transition-colors ${showPendingHospital ? 'bg-green-600' : 'bg-red-500'
             }`}
         >
           <FaHospital className="mr-2" /> Pending Hospitals
-        </button>
+        </button> */}
 
         <button
-          onClick={() => setShowRegisteredHospital(!showRegisteredHospital)}
+          onClick={() => { setShowRegisteredHospital(!showRegisteredHospital); setShowRegisteredUsers(false) }}
           className={`btn-toggle flex items-center border-2 p-3 rounded-full text-white transition-colors ${showRegisteredHospital ? 'bg-green-600' : 'bg-red-500'
             }`}
         >
           <FaHospital className="mr-2" /> Registered Hospitals
         </button>
-        
+
       </div>
 
       {/* Main content */}
