@@ -248,7 +248,7 @@ const BloodRequirement = ({ setToken }) => {
                 </button>
             </div> */}
 
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap  sm:mb-[5%] sm:mt-[5%]'>
                 {/* // camp post  */}
                 {selectedField === "campRequest" && (
                     <div class="w-full flex flex-col items-center justify-center p-4 blood-request-form">
