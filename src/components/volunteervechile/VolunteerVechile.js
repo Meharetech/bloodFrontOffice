@@ -406,7 +406,11 @@ const VolunteerVehicle = () => {
       }
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Licence Plate Already Registered .');
+      if (error.response.data) {
+        console.log(error.response.data.error)
+        toast.error(`${error.response.data.error} , Your Vehicle Number is Already Registered on the Site.`)
+      }
+      // toast.error('Error: Could not reach the server');
     }
   };
 
@@ -421,7 +425,7 @@ const VolunteerVehicle = () => {
       }
     } catch (error) {
       console.error('Error sending OTP:', error);
-      toast.error('Error sending OTP');
+      // toast.error('Error sending OTP');
     }
   };
 
@@ -432,6 +436,10 @@ const VolunteerVehicle = () => {
       if (response.status === 200) {
         setOtpVerified(true);
         toast.success('OTP verified successfully!');
+        setOtpSent(false)
+        setOtp('')
+        setTimer(600)
+        window.location.reload();
       } else {
         toast.error('Invalid OTP');
       }

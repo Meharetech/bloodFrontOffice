@@ -240,8 +240,7 @@ const EmergencyRequest = () => {
                 </div>
 
             ) : (
-                <div className=''>
-                    <br /><br /><br /><br />
+                <div className='mt-16'>
                     <input
                         type="text"
                         id="requestPhoneNumber"
@@ -262,54 +261,118 @@ const EmergencyRequest = () => {
                     <div className=" ml-10 mr-10 ">
                         {/* Display existing requests */}
                         {existingRequests.length > 0 && (
+                            // <div className="existing-requests col-span-full">
+                            //     <h3 className="text-2xl font-semibold text-gray-800 mb-6">Existing Emergency Blood Requests</h3>
+                            //     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            //         {existingRequests.map((request, index) => (
+                            //             <li
+                            //                 key={index}
+                            //                 className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
+                            //             >
+                            //                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6">
+                            //                     <div className="flex flex-col mb-4 sm:mb-0">
+                            //                         <strong className="text-2xl font-semibold text-blue-600">{request.bloodGroup}</strong>
+                            //                         <span className="text-gray-700 text-lg">{request.name}</span>
+                            //                         <span className="text-sm text-gray-500">{request.phoneNumber}</span>
+                            //                     </div>
+                            //                     <div className="ml-auto text-right mt-4 sm:mt-0">
+                            //                         <span className="text-xs text-gray-500">Status:</span>
+                            //                         <span
+                            //                             className={`font-semibold ${request.status === 'approved' ? 'text-green-500' : 'text-red-500'}`}
+                            //                         >
+                            //                             {request.status}
+                            //                         </span>
+                            //                     </div>
+                            //                 </div>
+                            //                 <div className="mt-4 space-y-3">
+                            //                     {/* Google Maps Link with Latitude and Longitude */}
+                            //                     <p className="text-sm text-gray-600">
+                            //                         <strong>Location:</strong>{' '}
+                            //                         <a
+                            //                             href={`https://www.google.com/maps?q=${request.location.latitude},${request.location.longitude}`}
+                            //                             target="_blank"
+                            //                             rel="noopener noreferrer"
+                            //                             className="text-blue-500 hover:text-blue-700 underline"
+                            //                         >
+                            //                             Latitude: {request.location.latitude}, Longitude: {request.location.longitude}
+                            //                         </a>
+                            //                     </p>
+                            //                     <p className="text-sm text-gray-600">
+                            //                         <strong>Request Time:</strong> {new Date(request.dateOfQuery).toLocaleString()}
+                            //                     </p>
+                            //                     <p className="text-sm text-gray-600">
+                            //                         <strong>Expiry:</strong> {new Date(request.expireAt).toLocaleString()}
+                            //                     </p>
+                            //                 </div>
+                            //             </li>
+                            //         ))}
+                            //     </ul>
+
+                            // </div>
                             <div className="existing-requests col-span-full">
-                                <h3 className="text-2xl font-semibold text-gray-800 mb-6">Existing Emergency Blood Requests</h3>
-                                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {existingRequests.map((request, index) => (
-                                        <li
-                                            key={index}
-                                            className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105"
-                                        >
-                                            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6">
-                                                <div className="flex flex-col mb-4 sm:mb-0">
-                                                    <strong className="text-2xl font-semibold text-blue-600">{request.bloodGroup}</strong>
-                                                    <span className="text-gray-700 text-lg">{request.name}</span>
-                                                    <span className="text-sm text-gray-500">{request.phoneNumber}</span>
-                                                </div>
-                                                <div className="ml-auto text-right mt-4 sm:mt-0">
-                                                    <span className="text-xs text-gray-500">Status:</span>
-                                                    <span
-                                                        className={`font-semibold ${request.status === 'approved' ? 'text-green-500' : 'text-red-500'}`}
+                                <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+                                    Existing Emergency Blood Requests
+                                </h3>
+                                <div className="overflow-x-auto">
+                                    <table className="min-w-full bg-white border border-gray-200 shadow-lg rounded-lg">
+                                        <thead className="bg-gray-100">
+                                            <tr>
+                                                <th className="text-left px-6 py-1 sm:py-3 text-gray-600 font-semibold">Blood Group</th>
+                                                <th className="text-left px-6 py-3 text-gray-600 font-semibold">Name</th>
+                                                <th className="text-left px-6 py-3 text-gray-600 font-semibold">Phone Number</th>
+                                                <th className="text-left px-6 py-3 text-gray-600 font-semibold">Location</th>
+                                                <th className="text-left px-6 py-3 text-gray-600 font-semibold">Request Time</th>
+                                                <th className="text-left px-6 py-3 text-gray-600 font-semibold">Expiry</th>
+                                                <th className="text-left px-6 py-3 text-gray-600 font-semibold">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {existingRequests.map((request, index) => (
+                                                <tr
+                                                    key={index}
+                                                    className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                                                        }`}
+                                                >
+                                                    <td className="px-6 py-4 text-blue-600 font-semibold">
+                                                        {request.bloodGroup}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-gray-700">
+                                                        {request.name}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-gray-500">
+                                                        {request.phoneNumber}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-blue-500 hover:text-blue-700 underline">
+                                                        <a
+                                                            href={`https://www.google.com/maps?q=${request.location.latitude},${request.location.longitude}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            Latitude: {request.location.latitude}, Longitude:{' '}
+                                                            {request.location.longitude}
+                                                        </a>
+                                                    </td>
+                                                    <td className="px-6 py-4 text-gray-600">
+                                                        {new Date(request.dateOfQuery).toLocaleString()}
+                                                    </td>
+                                                    <td className="px-6 py-4 text-gray-600">
+                                                        {new Date(request.expireAt).toLocaleString()}
+                                                    </td>
+                                                    <td
+                                                        className={`px-6 py-4 font-semibold ${request.status === 'approved'
+                                                                ? 'text-green-500'
+                                                                : 'text-red-500'
+                                                            }`}
                                                     >
                                                         {request.status}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="mt-4 space-y-3">
-                                                {/* Google Maps Link with Latitude and Longitude */}
-                                                <p className="text-sm text-gray-600">
-                                                    <strong>Location:</strong>{' '}
-                                                    <a
-                                                        href={`https://www.google.com/maps?q=${request.location.latitude},${request.location.longitude}`}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-blue-500 hover:text-blue-700 underline"
-                                                    >
-                                                        Latitude: {request.location.latitude}, Longitude: {request.location.longitude}
-                                                    </a>
-                                                </p>
-                                                <p className="text-sm text-gray-600">
-                                                    <strong>Request Time:</strong> {new Date(request.dateOfQuery).toLocaleString()}
-                                                </p>
-                                                <p className="text-sm text-gray-600">
-                                                    <strong>Expiry:</strong> {new Date(request.expireAt).toLocaleString()}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+
                         )}
                     </div>
                 </div>
