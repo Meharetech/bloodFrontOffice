@@ -14,7 +14,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="hero-container" data-aos="fade-left">
+    <div className="hero-container sm:mb-[5%] sm:mt-[5%]" data-aos="fade-left">
       {/* <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 items-center justify-between p-10 sm:p-24">
        */}
       <div className='flex flex-col items-center sm:flex-row justify-evenly'

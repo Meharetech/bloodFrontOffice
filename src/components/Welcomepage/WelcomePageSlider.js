@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import 'swiper/swiper-bundle.css'; 
-import { Navigation,Autoplay } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 // import sliderImage1 from '../images/home_1_slider_1.jpg';
 // import sliderImage2 from '../images/about_feat_bg.jpg';
@@ -57,12 +57,24 @@ const WelcomePageSlider = () => {
             IN OTHER PERSON'S FACE
           </h2>
           <div className="flex space-x-4">
-            <a href='/loginsignup' className="btn btn-theme bg-red-500 text-white py-2 px-6 rounded">
+            <a
+              href="/loginsignup"
+              className="bg-red-600 text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-md 
+             hover:bg-orange-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 
+             transition-all duration-300 ease-in-out"
+            >
               Donate Now
             </a>
-            <a href="#" className="btn btn-theme-invert border border-white text-white py-2 px-6 rounded">
+
+            <a
+              href="tel:+919992396623"
+              className="inline-block bg-teal-600 text-white font-bold py-2 px-6 rounded-lg border border-transparent shadow-md 
+             hover:bg-teal-500 hover:border-teal-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2 
+             transition-all duration-300 ease-in-out"
+            >
               CALL: +91 99923-96623
             </a>
+
           </div>
         </div>
       </SwiperSlide>
@@ -82,9 +94,15 @@ const WelcomePageSlider = () => {
             <br />
             AND INSPIRE OTHERS.
           </h2>
-          <a href="/loginsignup" className="btn btn-theme bg-red-500 text-white py-2 px-6 rounded">
+          <a
+            href="/loginsignup"
+            className="bg-red-600 text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-md 
+             hover:bg-orange-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 
+             transition-all duration-300 ease-in-out"
+          >
             Donate Now
           </a>
+
         </div>
       </SwiperSlide>
     </Swiper>

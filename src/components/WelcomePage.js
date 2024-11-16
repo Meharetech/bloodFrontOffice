@@ -215,9 +215,14 @@ const WelcomePage = () => {
                         <p className="text-gray-700 text-base sm:text-lg lg:text-xl mb-6">
                             Millions of people need blood transfusions every year, and by donating your blood, you can save lives and help your community. One donation can save up to three lives!
                         </p>
-                        <a href="/loginsignup" className="bg-red-600 text-white py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow hover:bg-red-700 transition duration-300">
-                            Donate Now
-                        </a>
+                          <a
+              href="/loginsignup"
+              className="bg-red-600 text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-md 
+             hover:bg-orange-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 
+             transition-all duration-300 ease-in-out"
+            >
+              Donate Now
+            </a>
                     </div>
 
                     {/* Image Section */}

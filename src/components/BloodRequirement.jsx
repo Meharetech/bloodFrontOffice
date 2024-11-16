@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './styles/BloodRequirement.css'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import { BaseUrl } from './Util/util';
 import { toast } from 'react-toastify';
 
 const BloodRequirement = ({ setToken }) => {
+    const navigate = useNavigate();
     const [requests, setRequests] = useState([]);
     const [bloodGroup, setBloodGroup] = useState('');
     const [name, setName] = useState('');
@@ -23,6 +24,8 @@ const BloodRequirement = ({ setToken }) => {
     const [campRequests, setCampRequests] = useState([]);
     const [maxEndDate, setMaxEndDate] = useState('');
     const [campDisplay, setcampDisplay] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     // State to track which form section to display
     const [selectedField, setSelectedField] = useState("bloodRequest");
 
@@ -131,23 +134,40 @@ const BloodRequirement = ({ setToken }) => {
     };
 
     const bloodRequest = async () => {
+        // Check if bloodGroup and location are provided
         if (!bloodGroup || !location) {
-            window.alert("Blood Group and location is required for sending request");
+            window.alert("Blood Group and location are required for sending request");
         } else {
             const userData = { bloodGroup, location, name };
-            const token = localStorage.getItem("token")
+            const token = localStorage.getItem("token");
+    
+            // Disable the button
+            setIsSubmitting(true);
+    
             try {
                 const response = await axios.post(`${BaseUrl}/sendBloodRequest`, userData, {
-                    headers: { Authorization: token }
+                    headers: { Authorization: token },
                 });
-                toast.success("Successfully Submitted a Blood request")
+    
+                // Show success message
+                toast.success("Successfully Submitted a Blood request");
                 console.log("response is this from =>", response.data);
+            navigate("/bloodRequirement?query=UserBloodRequests")
+    
+                // After 5 seconds, enable the button
+                setTimeout(() => {
+                    setIsSubmitting(false);
+                }, 5000);
             } catch (error) {
-                console.error('Request failed:', error);
-                toast.error('Failed to send blood request. Please try again.')
+                console.error("Request failed:", error);
+                toast.error("Failed to send blood request. Please try again.");
+    
+                // In case of an error, enable the button immediately
+                setIsSubmitting(false);
             }
         }
-
+    
+        // Fetch sent requests
         getSentRequests();
     };
 
@@ -289,8 +309,10 @@ const BloodRequirement = ({ setToken }) => {
                             Enter the Blood Group in small case letters e.g., a+, b+, o-
                         </label>
                         <br />
-                        <select className='h-10 border-2 border-black' value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)}>
-                            <option value="">Select Your Blood Group</option>
+                        <select className="h-10 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+
+                            value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)}>
+                            <option value="">🩸 Select Your Blood Group</option>
                             <option value="a+">A+</option>
                             <option value="a-">A-</option>
                             <option value="b+">B+</option>
@@ -311,17 +333,25 @@ const BloodRequirement = ({ setToken }) => {
                             Enter The Name
                         </label>
                         <br />
-                        <input
-                            type="text"
-                            id="name"
-                            placeholder="Name Of Requestor"
-                            className="form-input"
-                            onChange={(e) => setName(e.target.value)}
-                        />
+                        <div className="relative">
+                            <span className="absolute left-2 top-2/4 transform -translate-y-1/2 text-xl">📝</span>
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Name Of Requestor"
+                                className="pl-10 py-2 border-2 border-gray-300 focus:border-red-400 focus:ring-2 focus:ring-red-300 focus:outline-none transition-all duration-200 w-full rounded-full"
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </div>
                         <br />
-                        <button className="form-button !bg-red-400 hover:!bg-red-500" onClick={bloodRequest}>
-                            Request Blood
-                        </button><br />
+                        <button
+                            className="form-button !bg-red-400 hover:!bg-red-500"
+                            onClick={bloodRequest}
+                            disabled={isSubmitting} // Disable the button if isSubmitting is true
+                        >
+                            {isSubmitting ? "Submitting..." : "Request Blood"}
+                        </button>
+                        <br />
                         <br />
                         {/* <button onClick={getSentRequests}>My Requests</button> */}
                     </div>

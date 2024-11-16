@@ -105,7 +105,7 @@ const AllRequests = () => {
                 <div className="flex items-center justify-center mt-28 mb-28">
                     <h2 className="text-2xl w-96 text-white rounded-full font-bold bg-red-600">Emergency Request Near You</h2>
                 </div>
-                <ul className="donater-grid ml-2 mr-2 mt-2 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                <ul className="donater-grid ml-5 mr-5 mt-2 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {emergencyRequests.map((donater, index) => (
                         <Link to={`/donationDetails?donationId=${donater._id}`} key={index} className="block">
                             <li className="border-4 rounded-lg bg-slate-50 p-4 shadow-md flex flex-col justify-between h-full">

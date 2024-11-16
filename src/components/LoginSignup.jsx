@@ -33,6 +33,8 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
   const [signupbuttonclick, setsignupbutton] = useState(false);
   const [otp, setotp] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -226,52 +228,82 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
     >
 
       <h1>{signupbuttonclick}</h1>
-      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"}  bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? "md:ml-32 ml-12 mt-9 mb-36" : ""}`} data-aosx="fade-left">
+      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"}  bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? "md:ml-11 ml-10 sm:ml-12 mt-9 mb-36" : ""}`} data-aosx="fade-left">
         {/* Logo and Title */}
         <div className="sm:mx-auto sm:w-full sm:max-w-sm " data-aosx="zoom-in">
-          <img alt="Your Company" src={logo} className="mx-auto h-10 w-auto" />
+          <img alt="Your Company" src={logo} className="mx-auto h-15 w-[200px]" />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             {signup ? 'Sign Up to Your Account' : 'Log in to Your Account'}
           </h2>
         </div>
 
         {/* Form Inputs */}
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-xl ml-7">
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-xl ">
           <div
-            className={`grid gap-6 space-y-0`} // Add spacing between fields
+            className={` gap-6 space-y-0 ${signup ? "grid" : "flex flex-col"}`} // Add spacing between fields
             style={{
               gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))' // Use minmax to define responsive columns
             }}
           >
 
             {/* Phone Number Input */}
-            <div data-aosx="fade-up" className={signupbuttonclick ? "hidden" : "block"} >
-              <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
+            <div
+              data-aosx="fade-up"
+              className={signupbuttonclick ? "hidden" : "flex flex-col space-y-4"}
+            >
+              {/* Label for the input field */}
+              <label
+                htmlFor="phone"
+                className="text-sm font-medium text-gray-900 leading-6 flex p-2"
+              >
                 Phone Number
               </label>
-              <div className="mt-2">
+
+              {/* Input wrapper with relative positioning for the icon */}
+              <div className="relative mt-1">
                 <input
                   id="phone"
                   name="phone"
-                  type="phone"
+                  type="tel"
                   required
-                  placeholder="Phone Number"
+                  placeholder="Enter your phone number"
                   value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  className="block w-full rounded-md border-1 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  onChange={(e) => {
+                    const numericValue = e.target.value.replace(/\D/g, "");
+                    if (numericValue.length <= 10) {
+                      setPhoneNumber(numericValue);
+                    }
+                  }}
+                  className="block w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-3 text-gray-900 shadow-sm placeholder-gray-400 
+        focus:outline-none focus:outline-2 focus:outline-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
+
+                {/* Icon positioned inside the input field */}
+                <span
+                  className="absolute inset-y-0 left-3 flex items-center text-gray-400"
+                >
+                  📞
+                </span>
               </div>
             </div>
+
+
 
             {/* email input  */}
             {signup && (
               <>
                 {/* name input  */}
-                <div data-aosx="fade-up">
-                  <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
+                <div
+                  data-aosx="fade-up"
+                  className={signupbuttonclick ? "opacity-50 pointer-events-none" : "flex flex-col space-y-4"}
+                >
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-medium text-gray-900 leading-6 flex p-2"
+                  >
                     Name
                   </label>
-                  <div className="mt-2">
+                  <div className="relative mt-1">
                     <input
                       id="name"
                       name="name"
@@ -280,47 +312,87 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                       placeholder="Enter Your Name"
                       value={name}
                       onChange={(e) => setname(e.target.value)}
-                      className="block w-full rounded-md border-1 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={signupbuttonclick}
+                      className={`block w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-3 text-gray-900 shadow-sm placeholder-gray-400 
+        focus:outline-none focus:outline-2 focus:outline-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6 
+        ${signupbuttonclick ? "cursor-not-allowed bg-gray-100" : ""}`}
                     />
+                    <span
+                      className="absolute inset-y-0 left-3 flex items-center text-gray-400"
+                    >
+                      👤
+                    </span>
                   </div>
                 </div>
-                <div data-aosx="fade-up">
-                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+
+
+                <div
+                  data-aosx="fade-up"
+                  className={signupbuttonclick ? "opacity-50 pointer-events-none" : "flex flex-col space-y-4"}
+                >
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-medium text-gray-900 leading-6 flex p-2"
+                  >
                     Email
                   </label>
-                  <div className="mt-2">
+                  <div className="relative mt-1">
                     <input
                       id="email"
                       name="email"
-                      type="text"
+                      type="email"
                       required
                       placeholder="Enter Your Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="block w-full rounded-md border-1 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={signupbuttonclick}
+                      className={`block w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-3 text-gray-900 shadow-sm placeholder-gray-400 
+        focus:outline-none focus:outline-2 focus:outline-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6 
+        ${signupbuttonclick ? "cursor-not-allowed bg-gray-100" : ""}`}
                     />
+                    <span
+                      className="absolute inset-y-0 left-3 flex items-center text-gray-400"
+                    >
+                      📧
+                    </span>
                   </div>
                 </div>
-                <div data-aosx="fade-up">
-                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                    Ngo Name {`(Optional)`}
+
+                <div
+                  data-aosx="fade-up"
+                  className={signupbuttonclick ? "opacity-50 pointer-events-none" : "flex flex-col space-y-4"}
+                >
+                  {/* Label for NGO Name */}
+                  <label
+                    htmlFor="ngoName"
+                    className="text-sm font-medium text-gray-900 leading-6 flex p-2"
+                  >
+                    Ngo Name <span className="text-gray-500">(Optional)</span>
                   </label>
-                  <div className="mt-2">
+
+                  {/* Input Wrapper with Icon */}
+                  <div className="relative mt-1">
                     <input
                       id="ngoName"
                       name="ngoName"
                       type="text"
-                      required
                       placeholder="Enter Your Ngo Name"
                       value={ngoName}
                       onChange={(e) => setngoName(e.target.value)}
-                      className="block w-full rounded-md border-1 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       disabled={signupbuttonclick}
+                      className={`block w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-3 text-gray-900 shadow-sm placeholder-gray-400 
+        focus:outline-none focus:outline-2 focus:outline-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6 
+        ${signupbuttonclick ? "cursor-not-allowed bg-gray-100" : ""}`}
                     />
+                    {/* Icon Positioned Inside Input */}
+                    <span
+                      className="absolute inset-y-0 left-3 flex items-center text-gray-400"
+                    >
+                      🏢
+                    </span>
                   </div>
                 </div>
+
               </>
             )}
 
@@ -356,39 +428,62 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
 
 
             {/* Password Input */}
-            <div data-aosx="fade-up" className={signupbuttonclick ? "hidden" : "block"}>
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+            <div
+              data-aosx="fade-up"
+              className={signupbuttonclick ? "hidden" : "flex flex-col space-y-4"}
+            >
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-900 leading-6 flex p-2"
+              >
                 Password
               </label>
-              <div className="mt-2">
+              <div className="relative mt-1">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
-                  placeholder="Password"
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-md border-1 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-lg border border-gray-300 bg-white py-2 px-3 text-gray-900 shadow-sm placeholder-gray-400 focus:outline-none focus:outline-2 focus:outline-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
+                <span
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-400 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "🙈" : "👁️"}
+                </span>
               </div>
             </div>
 
 
+
             {/* Conditional Blood Group Selection - Shown only if signup is true */}
             {signup && (
-              <div data-aosx="fade-up" className={signupbuttonclick ? "hidden" : "block"}>
-                <label htmlFor="bloodGroup" className="block text-sm font-medium leading-6 text-gray-900">
+              <div
+                data-aosx="fade-up"
+                className={signupbuttonclick ? "hidden" : "flex flex-col space-y-4"}
+              >
+                {/* Label for Blood Group */}
+                <label
+                  htmlFor="bloodGroup"
+                  className="text-sm font-medium text-gray-900 leading-6 flex p-2"
+                >
                   Blood Group
                 </label>
-                <div className="mt-2">
+
+                {/* Select Wrapper with Icon */}
+                <div className="relative mt-1">
                   <select
                     id="bloodGroup"
                     name="bloodGroup"
                     required
                     value={bloodGroup}
                     onChange={(e) => setBloodGroup(e.target.value)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className={`block w-full rounded-lg border border-gray-300 bg-white py-2 pl-10 pr-3 text-gray-900 shadow-sm placeholder-gray-400 
+                    focus:outline-none focus:outline-2 focus:outline-blue-500 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6`}
                   >
                     <option value="">Select Your Blood Group</option>
                     <option value="a+">A+</option>
@@ -406,8 +501,16 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
                     <option value="hh">HH (Bombay Blood Group)</option>
                     <option value="inra">INRA</option>
                   </select>
+
+                  {/* Icon Positioned Inside Select */}
+                  <span
+                    className="absolute inset-y-0 left-3 flex items-center text-gray-400"
+                  >
+                    🩸
+                  </span>
                 </div>
               </div>
+
             )}
 
           </div>

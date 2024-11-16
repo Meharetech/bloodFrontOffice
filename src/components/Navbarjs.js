@@ -294,7 +294,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                     onClick={handleSignup}
                     className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-red-600 px-4 py-2 rounded-lg font-semibold"
                   >
-                    Want To Donate Blood
+                    Sign Up
                   </Nav.Link>
                 </div>
 
