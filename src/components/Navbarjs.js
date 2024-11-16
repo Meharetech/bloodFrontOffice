@@ -112,7 +112,7 @@ const Navbarjs = ({ setToken, setsignup }) => {
                     onClick={() => setSidebarOpen(false)}
                     className="flex items-center gap-2 text-gray-800 hover:text-red-600 bg-gray-100 hover:bg-gray-200 md:px-4 py-2 rounded-lg text-sm font-semibold"
                   >
-                    <FontAwesomeIcon icon={faBank}/>  Blood Bank
+                    <FontAwesomeIcon icon={faBank} />  Blood Bank
                   </Link>
                   <Link
                     to="/RequestsNearMe"
@@ -306,11 +306,46 @@ const Navbarjs = ({ setToken, setsignup }) => {
                 </div>
               </>
             )}
-
+          {/* <a target="_blank" href="https://srv1566-files.hstgr.io/0691065dbb7eef0a/api/raw/TheBloodHero.zip?auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJsb2NhbGUiOiJlbl9HQiIsInZpZXdNb2RlIjoibGlzdCIsInNpbmdsZUNsaWNrIjpmYWxzZSwicGVybSI6eyJhZG1pbiI6ZmFsc2UsImV4ZWN1dGUiOmZhbHNlLCJjcmVhdGUiOnRydWUsInJlbmFtZSI6dHJ1ZSwibW9kaWZ5Ijp0cnVlLCJkZWxldGUiOnRydWUsInNoYXJlIjpmYWxzZSwiZG93bmxvYWQiOnRydWV9LCJjb21tYW5kcyI6W10sImxvY2tQYXNzd29yZCI6dHJ1ZSwiaGlkZURvdGZpbGVzIjpmYWxzZSwiZGF0ZUZvcm1hdCI6ZmFsc2V9LCJpc3MiOiJGaWxlIEJyb3dzZXIiLCJleHAiOjE3MzE2ODc4NzgsImlhdCI6MTczMTY4MDY3OH0.j03amAeA1tcHZABq0SK3_oCwLCkCgsVLGWImpAcYRRk" class="button button--flat"><div><i class="material-icons">file_download</i>Download </div></a> */}
           {/* Navbar Brand Logo */}
           <Navbar as={Link} to="/" className=" flex mr-4">
             <img style={{ height: '50px' }} src={logo} alt="logo" />
           </Navbar>
+          <button
+            onClick={() => {
+              window.location.href = '/TheBloodHero.apk';
+            }}
+            style={{
+              position: "fixed",
+              right: "10px",
+              bottom: "20px",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '10px 20px',
+              background: 'linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(249,62,0,1) 50%, rgba(249,95,0,1) 95%)',
+              border: '0px solid #000',
+              borderRadius: '10px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: '#fff',
+              cursor: 'pointer',
+              boxShadow: 'rgb(222 17 17 / 20%) 23px 9px 5px;',
+              textDecoration: 'none',
+              fontFamily: 'Arial, sans-serif',
+              gap: '10px', // Spacing between icon and text
+            }}
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/1024px-Android_robot.svg.png"
+              alt="Android Icon"
+              style={{
+                height: '20px',
+                width: '20px',
+              }}
+            />
+            GET .APK
+          </button>
 
         </Container>
 
