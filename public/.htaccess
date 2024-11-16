@@ -3,3 +3,13 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]
+
+# Example: Allow access to all files in the /files directory
+<Directory "/path/to/files/">
+  Allow from all
+</Directory>
+
+<FilesMatch "\.apk$">
+  ForceType application/octet-stream
+  Header set Content-Disposition attachment
+</FilesMatch>
