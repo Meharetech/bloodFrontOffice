@@ -193,8 +193,8 @@ const WelcomePage = () => {
             </div>
 
 
-            <Banneradd />
             <WelcomePageSlider data-aos='fade-left' />
+            <Banneradd />
 
             <div className="container mx-auto mt-12">
 
