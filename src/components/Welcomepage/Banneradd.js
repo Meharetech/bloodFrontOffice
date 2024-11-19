@@ -28,7 +28,7 @@ const Banneradd = () => {
                 data && (
                     <div className="mb-1 mt-1 z-20 w-full">
                         <marquee>
-                            <div className="flex gap-4">
+                            <div className="flex gap-32 justify-center items-center">
                                 {data.map((bannerItem) => (
                                     <div key={bannerItem._id} className="bg-white rounded-lg shadow flex-shrink-0">
                                         {/* <h1 className="text-3xl font-bold mb-2">{bannerItem.title}</h1> */}

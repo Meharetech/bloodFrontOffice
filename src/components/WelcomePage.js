@@ -119,7 +119,7 @@ const WelcomePage = () => {
         return (
             <>
                 <div className=" text-3xl mb-1 text-red-500 mr-2 marquee">
-                <Link to={'/hospitalbloodinfo'} className='hover:underline' > Hospital Blood Info</Link>   
+                    <Link to={'/hospitalbloodinfo'} className='hover:underline' > Hospital Blood Info</Link>
                 </div>
             </>
         );
@@ -181,11 +181,11 @@ const WelcomePage = () => {
     return (
         <div className="bg-gray-100 p-  min-h-screen overflow-hidden">
             <div className='bg-red-50'>
-            <marquee>  <Marquee events={events} /></marquee>
+                <marquee>  <Marquee events={events} /></marquee>
             </div>
-                  
-              
-            <hr className='text-red-600'/>
+
+
+            <hr className='text-red-600' />
             <div className="scroll-container bg-blue-100">
                 <div className="scroll-content">
                     <Hospitalmar />
@@ -193,8 +193,8 @@ const WelcomePage = () => {
             </div>
 
 
-            <Banneradd />
             <WelcomePageSlider data-aos='fade-left' />
+            <Banneradd />
 
             <div className="container mx-auto mt-12">
 
@@ -215,14 +215,14 @@ const WelcomePage = () => {
                         <p className="text-gray-700 text-base sm:text-lg lg:text-xl mb-6">
                             Millions of people need blood transfusions every year, and by donating your blood, you can save lives and help your community. One donation can save up to three lives!
                         </p>
-                          <a
-              href="/loginsignup"
-              className="bg-red-600 text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-md 
+                        <a
+                            href="/loginsignup"
+                            className="bg-red-600 text-white font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-lg shadow-md 
              hover:bg-orange-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 
              transition-all duration-300 ease-in-out"
-            >
-              Donate Now
-            </a>
+                        >
+                            Donate Now
+                        </a>
                     </div>
 
                     {/* Image Section */}

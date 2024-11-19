@@ -17,6 +17,7 @@ import logo from './images/iinsaf.png';
 import loginleftImage from './images/loginleftImage.png'
 import loginrightImage from './images/loginrightImage.png'
 import bloodRegister from './images/bloodregister.png'
+import bloodRegister2 from './images/6553556[1].webp'
 import { BaseUrl } from './Util/util';
 
 // const images = [left, login1, login2, login3, login4, login5];
@@ -216,19 +217,20 @@ const LoginSignup = ({ setToken, signup, setsignup }) => {
 
   return (
     <div
-      className={`min-h-screen flex items-center ${signup ? 'justify-start' : "justify-center"}  bg-gray-100`}
+      className={`min-h-screen flex items-center ${signup ? 'justify-center ' : "justify-center"}  bg-gray-100`}
       style={{
         backgroundImage: signup
-          ? `url(${bloodRegister})`
+          ? `url(${bloodRegister2})`
           : `url(${loginleftImage}), url(${loginrightImage})`,
-        backgroundSize: signup ? '56%' : '40%, 40%',
+        backgroundSize: signup ? 'cover' : '40%, 40%',
         backgroundPosition: signup ? 'right' : 'left, right',
         backgroundRepeat: 'no-repeat, no-repeat' // Prevent images from repeating
       }}
     >
 
       <h1>{signupbuttonclick}</h1>
-      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"}  bg-white border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? "md:ml-11 ml-10 sm:ml-12 mt-9 mb-36" : ""}`} data-aosx="fade-left">
+      <div className={`w-5/6 md:w-full ${signup ? "max-w-2xl" : "max-w-md"} bg-white bg-opacity-50 backdrop-blur-lg border-4 border-gray-300 rounded-lg shadow-lg p-6 ${signup ? " mt-[4%] mb-36" : ""}`} data-aosx="fade-left">
+
         {/* Logo and Title */}
         <div className="sm:mx-auto sm:w-full sm:max-w-sm " data-aosx="zoom-in">
           <img alt="Your Company" src={logo} className="mx-auto h-15 w-[200px]" />
